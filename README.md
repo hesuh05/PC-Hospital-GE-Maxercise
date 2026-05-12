@@ -9,7 +9,9 @@ Sistema integral de gestión hospitalaria para la Universidad Distrital Francisc
 ```
 PC-Hospital-UDN-Gerencia/
 ├── Docs/              - Documentación técnica y requisitos
-└── DataModels/        - Modelos de Machine Learning
+├── DataBases/         - Esquemas y datos relacionales/no relacionales
+├── DataModels/        - Modelos de Machine Learning
+└── Deliverables/      - Aplicaciones y entregables finales
 ```
 
 ## Objetivo
@@ -21,9 +23,11 @@ Centralizar la gestión hospitalaria en una plataforma unificada, mejorando efic
 ## Carpetas Principales
 
 | Carpeta | Descripción |
-|---------|------------|
+|---------|-------------|
 | **Docs** | Requisitos de negocio, funcionales, no funcionales y diseños |
+| **DataBases** | Esquemas SQL/NoSQL y configuraciones de datos |
 | **DataModels** | Modelos supervisados y no supervisados de ML |
+| **Deliverables** | API REST, Web App y Wearable App finalizados |
 
 ## Inicio Rápido
 
@@ -37,7 +41,7 @@ Centralizar la gestión hospitalaria en una plataforma unificada, mejorando efic
 | Integrante | Contacto | Rol | Observaciones |
 |-----------|----------|-----|---------------|
 | **Jesus Dominguez Ramirez** | @jesusdominguez | Líder de Desarrollo FrontEnd | ✅ Revisado y aprobado |
-| **Adrian Perez Jimenez** | @adrianperez | Desarrollador de DataBases | ❌ Hay errores en el código, no aprobado |
+| **Adrian Perez Jimenez** | @adrianperez | Desarrollador de DataBases | ✅ Revisado y aprobado |
 | **Luis Daniel Suarez Escamilla** | @luisdaniel | Desarrollador FrontEnd | ✅ Revisado y aprobado |
 | **Jonathan Emanuel Lopez Morales** | @jonathan | Desarrollador Backend | ✅ Revisado y aprobado |
 
