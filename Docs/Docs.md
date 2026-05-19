@@ -1,46 +1,49 @@
-# 📚 Documentación (Docs)
+# 📚 Docs
 
-## Descripción
+![Markdown](https://img.shields.io/badge/Markdown-Documentation-blue?style=flat) ![Requirements](https://img.shields.io/badge/Requirements-BA-orange?style=flat) ![Agile](https://img.shields.io/badge/Agile-Scrum-brightgreen?style=flat) ![Design](https://img.shields.io/badge/Design-UI--UX-ff69b4?style=flat)
+
+## 📋 Descripción
 
 Carpeta con toda la documentación técnica, funcional y de negocio del sistema. Proporciona requisitos, diseño y especificaciones necesarias para entender y desarrollar el proyecto.
 
-## Contenido Esperado
+---
+
+## 📁 Estructura de Subdirectorios
 
 ```
 Docs/
-├── BRs/           - Requisitos de Negocio
-├── FRs/           - Requisitos Funcionales
-├── URs/           - Requisitos de Usuario
-├── UHs/           - Historias de Usuario
-├── NFRs/          - Requisitos No Funcionales
-└── GUIs/          - Interfaces Gráficas (WebApp, WearableApp)
+├── BRs/
+│   └── Requisitos de Negocio
+│
+├── FRs/
+│   └── Requisitos Funcionales
+│
+├── URs/
+│   └── Requisitos de Usuario
+│
+├── UHs/
+│   └── Historias de Usuario
+│
+├── NFRs/
+│   └── Requisitos No Funcionales
+│
+└── GUIs/
+    ├── WebApp/
+    └── WearableApp/
 ```
 
-## Objetivo
+---
 
-Ofrecer especificación clara, completa y trazable de todos los requisitos y diseños del sistema para guiar desarrollo y asegurar aceptación.
+## 👥 Colaboradores
+
+| Integrante | Contacto | Rol | OBSERVACIONES |
+|-----------|----------|-----|---------------|
+| Jesús Domínguez Ramírez | @hesuh05 | Desarrollador Backend (y Administración de Bases de Datos) | 😐 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | 😐 No ha revisado. |
+| Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | 😐 No ha revisado. |
+| Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
 
 ---
 
-## 📚 Secciones Principales
-
-### 💼 BRs - Requisitos de Negocio
-
-**Propósito:** Definir el contexto estratégico y objetivos del proyecto
-
-- Visión y misión del sistema
-- Objetivos de negocio
-## Secciones
-
-| Documento | Descripción |
-|-----------|-------------|
-| **BRs** | Visión, misión, objetivos y políticas del negocio |
-| **FRs** | Funcionalidades detalladas del sistema |
-| **URs** | Necesidades específicas de usuarios finales |
-| **UHs** | Historias de usuario con criterios de aceptación |
-| **NFRs** | Performance, seguridad, escalabilidad, usabilidad |
-| **GUIs** | Diseños visuales para WebApp y WearableApp |
-
----
-
-**Última actualización:** Mayo 2026
+**⏰ Última actualización:** Mayo 2026

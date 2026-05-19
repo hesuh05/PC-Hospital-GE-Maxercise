@@ -1,74 +1,23 @@
-# Non-Functional Requirements (Requisitos No Funcionales)
+# ⚡ NFRs
 
-Documentación de los requisitos no funcionales para el proyecto PC-Hospital-UDN-Gerencia.
+![Performance](https://img.shields.io/badge/Performance-Optimization-blue?style=flat) ![Security](https://img.shields.io/badge/Security-Encryption-red?style=flat) ![Scalability](https://img.shields.io/badge/Scalability-Architecture-brightgreen?style=flat) ![Reliability](https://img.shields.io/badge/Reliability-Uptime-yellow?style=flat) ![HIPAA](https://img.shields.io/badge/HIPAA-Compliance-orange?style=flat)
 
-## Descripción
+## 📋 Descripción
 
-Esta carpeta contiene la especificación de los requisitos que no describen funcionalidades específicas, pero sí caracterizan cómo el sistema debe comportarse en términos de calidad, performance y restricciones.
+Carpeta con documentación de requisitos no funcionales que especifica restricciones de calidad, rendimiento, seguridad y confiabilidad del sistema.
 
-## Categorías de NFRs
+---
 
-### Performance
-- Velocidad de respuesta
-- Throughput del sistema
-- Optimización de recursos
-- Eficiencia computacional
+## 👥 Colaboradores
 
-### Seguridad
-- Autenticación y autorización
-- Encriptación de datos
-- Protección contra vulnerabilidades
-- Auditoría y compliance
+| Integrante | Contacto | Rol | OBSERVACIONES |
+|-----------|----------|-----|---------------|
+| Jesús Domínguez Ramírez | @hesuh05 | Desarrollador Backend (y Administración de Bases de Datos) | 😐 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | 😐 No ha revisado. |
+| Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | 😐 No ha revisado. |
+| Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
 
-### Usabilidad
-- Interfaz intuitiva
-- Accesibilidad
-- Documentación de usuario
-- Curva de aprendizaje
+---
 
-### Confiabilidad
-- Disponibilidad del sistema
-- Recuperación de fallos
-- Redundancia
-- Respaldo de datos
-
-### Escalabilidad
-- Crecimiento de usuarios
-- Volumen de datos
-- Capacidad de transacciones
-- Expansión futura
-
-### Mantenibilidad
-- Código limpio y documentado
-- Modularidad
-- Facilidad de actualización
-- Soporte técnico
-
-## Importancia
-
-Los NFRs son críticos para:
-
-- Garantizar calidad del software
-- Cumplimiento normativo (HIPAA, GDPR, etc.)
-- Satisfacción del usuario
-- Sostenibilidad del sistema
-- Rentabilidad a largo plazo
-
-## Audiencia
-
-- Arquitectos de sistemas
-- Desarrolladores
-- Analistas de QA
-- Directivos técnicos
-
-## Relaciones
-
-Los NFRs se basan en:
-- Requisitos de Negocio (BRs)
-- Requisitos Funcionales (FRs)
-
-Y afectan:
-- Diseño de arquitectura
-- Selección de tecnologías
-- Plan de testing
-- Operaciones y mantenimiento
+**⏰ Última actualización:** Mayo 2026

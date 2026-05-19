@@ -1,66 +1,23 @@
-# User Histories (Historias de Usuario)
+# 📖 UHs
 
-Documentación de las historias de usuario para el proyecto PC-Hospital-UDN-Gerencia.
+![User--Stories](https://img.shields.io/badge/User--Stories-Agile-blue?style=flat) ![Scrum](https://img.shields.io/badge/Scrum-Framework-orange?style=flat) ![Acceptance--Criteria](https://img.shields.io/badge/Acceptance--Criteria-QA-brightgreen?style=flat) ![Estimation](https://img.shields.io/badge/Estimation-Planning-yellow?style=flat)
 
-## Descripción
+## 📋 Descripción
 
-Esta carpeta contiene las historias de usuario que describen las necesidades, objetivos y contexto desde la perspectiva de los diferentes usuarios del sistema.
+Carpeta con documentación de historias de usuario que describe funcionalidades desde la perspectiva del usuario en formato narrativo, incluyendo criterios de aceptación.
 
-## Formato de Historia de Usuario
+---
 
-Las historias de usuario siguen el formato estándar:
+## 👥 Colaboradores
 
-```
-Como [tipo de usuario]
-Quiero [acción/funcionalidad]
-Para que [beneficio/objetivo]
-```
+| Integrante | Contacto | Rol | OBSERVACIONES |
+|-----------|----------|-----|---------------|
+| Jesús Domínguez Ramírez | @hesuh05 | Desarrollador Backend (y Administración de Bases de Datos) | 😐 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | 😐 No ha revisado. |
+| Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | 😐 No ha revisado. |
+| Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
 
-## Elementos Incluidos
+---
 
-Cada historia de usuario contiene:
-
-- **Identificador**: ID único (UH-XXX)
-- **Título**: Descripción breve
-- **Actor/Rol**: Tipo de usuario (paciente, médico, administrador, etc.)
-- **Narrativa**: Descripción de la necesidad
-- **Criterios de Aceptación**: Condiciones para considerarla completa
-- **Prioridad**: Alta, Media, Baja
-- **Estimación**: Esfuerzo de desarrollo
-- **Dependencias**: Relación con otras historias
-
-## Propósito
-
-Las historias de usuario sirven para:
-
-- Capturar requisitos desde la perspectiva del usuario
-- Facilitar comunicación entre stakeholders y desarrollo
-- Dividir el trabajo en incrementos manejables
-- Servir como base para planning y estimación
-- Guiar testing y aceptación
-
-## Roles de Usuario Típicos
-
-- **Pacientes**: Usuarios del sistema de salud
-- **Médicos/Clínicos**: Profesionales de la salud
-- **Administrativos**: Personal de gestión hospitalaria
-- **Técnicos**: Personal de soporte y mantenimiento
-
-## Audiencia
-
-- Product owners
-- Analistas
-- Desarrolladores
-- Testers
-- Usuarios finales
-
-## Relaciones
-
-Las historias de usuario se derivan de:
-- Requisitos de Negocio (BRs)
-- Requisitos de Usuario (URs)
-
-Y generan:
-- Requisitos Funcionales (FRs)
-- Casos de prueba
-- Documentación de usuario
+**⏰ Última actualización:** Mayo 2026

@@ -1,65 +1,23 @@
-# User Requirements (Requisitos de Usuario)
+# 👤 URs
 
-Documentación de los requisitos de usuario para el proyecto PC-Hospital-UDN-Gerencia.
+![User--Research](https://img.shields.io/badge/User--Research-UX-blue?style=flat) ![Interviews](https://img.shields.io/badge/Interviews-Discovery-orange?style=flat) ![Personas](https://img.shields.io/badge/Personas-Mapping-brightgreen?style=flat) ![Needs--Analysis](https://img.shields.io/badge/Needs--Analysis-Planning-yellow?style=flat)
 
-## Descripción
+## 📋 Descripción
 
-Esta carpeta contiene la especificación de las necesidades, expectativas y requerimientos expresados directamente por los usuarios finales del sistema.
+Carpeta con documentación de requisitos de usuario que especifica necesidades y expectativas de diferentes tipos de usuarios del sistema.
 
-## Contenido
+---
 
-Los documentos en esta sección incluyen:
+## 👥 Colaboradores
 
-- Entrevistas y feedback de usuarios
-- Necesidades específicas por rol
-- Expectativas de funcionalidad
-- Restricciones de uso
-- Preferencias de interfaz
-- Casos de uso reales
+| Integrante | Contacto | Rol | OBSERVACIONES |
+|-----------|----------|-----|---------------|
+| Jesús Domínguez Ramírez | @hesuh05 | Desarrollador Backend (y Administración de Bases de Datos) | 😐 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | 😐 No ha revisado. |
+| Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | 😐 No ha revisado. |
+| Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
 
-## Importancia de los URs
+---
 
-Los requisitos de usuario son fundamentales para:
-
-- Asegurar que el sistema resuelva problemas reales
-- Validar relevancia de funcionalidades
-- Identificar gaps entre expectativas y capacidades
-- Priorizar features según necesidad real
-- Mejorar adopción del sistema
-
-## Métodos de Recopilación
-
-- Entrevistas con usuarios
-- Workshops y sesiones de trabajo
-- Observación del flujo de trabajo actual
-- Encuestas y cuestionarios
-- Focus groups
-- Análisis de feedback
-
-## Roles Principales
-
-- **Pacientes**: Necesidades de atención y seguimiento
-- **Médicos**: Requisitos clínicos y diagnósticos
-- **Enfermeras**: Necesidades de cuidado y monitoreo
-- **Administrativos**: Requisitos de gestión y reportes
-- **Directivos**: Necesidades de análisis y control
-
-## Audiencia
-
-- Product managers
-- Analistas de negocio
-- Diseñadores UX/UI
-- Desarrolladores
-- Stakeholders
-
-## Relaciones
-
-Los URs se derivan de:
-- Análisis de stakeholders
-- Investigación de usuarios
-- Procesos de negocio
-
-Y alimentan:
-- Historias de Usuario (UHs)
-- Requisitos Funcionales (FRs)
-- Diseño de interfaces (GUIs)
+**⏰ Última actualización:** Mayo 2026

@@ -1,57 +1,23 @@
-# Functional Requirements (Requisitos Funcionales)
+# ⚙️ FRs
 
-Documentación de los requisitos funcionales para el proyecto PC-Hospital-UDN-Gerencia.
+![Specifications](https://img.shields.io/badge/Specifications-Technical-blue?style=flat) ![Use--Cases](https://img.shields.io/badge/Use--Cases-Analysis-orange?style=flat) ![APIs](https://img.shields.io/badge/APIs-Integration-brightgreen?style=flat) ![Workflows](https://img.shields.io/badge/Workflows-Processes-yellow?style=flat)
 
-## Descripción
+## 📋 Descripción
 
-Esta carpeta contiene la especificación detallada de las funcionalidades que el sistema debe proporcionar.
+Carpeta con documentación de requisitos funcionales que especifica detalladamente las funcionalidades y comportamientos esperados del sistema.
 
-## Contenido
+---
 
-Los documentos en esta sección incluyen:
+## 👥 Colaboradores
 
-- Descripción de características principales del sistema
-- Casos de uso y flujos de proceso
-- Especificación de funciones y módulos
-- Comportamiento esperado del sistema
-- Interfaces y APIs
-- Transacciones y estados del sistema
+| Integrante | Contacto | Rol | OBSERVACIONES |
+|-----------|----------|-----|---------------|
+| Jesús Domínguez Ramírez | @hesuh05 | Desarrollador Backend (y Administración de Bases de Datos) | 😐 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | 😐 No ha revisado. |
+| Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | 😐 No ha revisado. |
+| Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
 
-## Estructura
+---
 
-Cada requisito funcional especifica:
-
-- **ID**: Identificador único (FR-XXX)
-- **Descripción**: Qué debe hacer el sistema
-- **Actores**: Quién interactúa con la función
-- **Precondiciones**: Estados iniciales requeridos
-- **Flujo**: Pasos del proceso
-- **Postcondiciones**: Estados finales esperados
-- **Excepciones**: Manejo de errores
-
-## Importancia
-
-Los requisitos funcionales son esenciales para:
-
-- Guiar la implementación del sistema
-- Servir como base para testing y validación
-- Comunicar funcionalidades a stakeholders
-- Especificar el comportamiento esperado
-
-## Audiencia
-
-- Analistas de sistemas
-- Desarrolladores
-- Testers
-- Product owners
-
-## Relaciones
-
-Los FRs se derivan de:
-- Requisitos de Negocio (BRs)
-- Historias de Usuario (UHs)
-
-Y alimentan:
-- Diseño técnico
-- Plan de testing
-- Documentación de usuario
+**⏰ Última actualización:** Mayo 2026

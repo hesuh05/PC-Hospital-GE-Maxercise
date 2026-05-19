@@ -1,41 +1,23 @@
-# Business Requirements (Requisitos de Negocio)
+# 💼 BRs
 
-Documentación de los requisitos de negocio para el proyecto PC-Hospital-UDN-Gerencia.
+![Business](https://img.shields.io/badge/Business-Strategy-blue?style=flat) ![Requirements](https://img.shields.io/badge/Requirements-Analysis-orange?style=flat) ![Stakeholders](https://img.shields.io/badge/Stakeholders-Management-green?style=flat) ![Compliance](https://img.shields.io/badge/Compliance-Regulatory-red?style=flat)
 
-## Descripción
+## 📋 Descripción
 
-Esta carpeta contiene la especificación de los objetivos comerciales, restricciones de negocio, políticas y directrices estratégicas del sistema.
+Carpeta con documentación de requisitos de negocio que define objetivos comerciales, restricciones y directrices estratégicas del sistema hospitalario.
 
-## Contenido
+---
 
-Los documentos en esta sección incluyen:
+## 👥 Colaboradores
 
-- Objetivos estratégicos del hospital
-- Políticas y procedimientos operacionales
-- Restricciones de negocio y regulatorias
-- Modelos de negocio y procesos clave
-- Análisis de viabilidad económica
-- Requisitos de cumplimiento legal y normativo
+| Integrante | Contacto | Rol | OBSERVACIONES |
+|-----------|----------|-----|---------------|
+| Jesús Domínguez Ramírez | @hesuh05 | Desarrollador Backend (y Administración de Bases de Datos) | 😐 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | 😐 No ha revisado. |
+| Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | 😐 No ha revisado. |
+| Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
 
-## Importancia
+---
 
-Los requisitos de negocio son fundamentales para:
-
-- Alinear el desarrollo con los objetivos del hospital
-- Asegurar cumplimiento normativo en el sector sanitario
-- Establecer límites y restricciones del sistema
-- Definir prioridades y alcance del proyecto
-
-## Audiencia
-
-- Directivos y líderes de negocio
-- Analistas de sistemas
-- Equipos de desarrollo
-- Stakeholders del proyecto
-
-## Relaciones
-
-Los BRs sirven como base para:
-- Derivar Requisitos Funcionales (FRs)
-- Definir Historias de Usuario (UHs)
-- Establecer restricciones del sistema (NFRs)
+**⏰ Última actualización:** Mayo 2026
