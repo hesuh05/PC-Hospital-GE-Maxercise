@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Sistema integral de gestión hospitalaria para la Universidad Distrital Francisco José de Caldas. Integra múltiples módulos: APIs REST, aplicaciones web, aplicaciones wearable y bases de datos robustas.
+Sistema integral de gestión hospitalaria para la Universidad Tecnológica De Xicotepec de Juárez. Integra múltiples módulos: APIs REST, aplicaciones web, aplicaciones wearable y bases de datos robustas.
 
 ## Contenido Esperado
 
@@ -33,6 +33,8 @@ Centralizar la gestión hospitalaria en una plataforma unificada, mejorando efic
 
 - [Documentación Completa](Docs/Docs.md)
 - [Modelos de Datos](DataModels/DataModels.md)
+- [Bases de Datos](DataBases/)
+- [Entregables](Deliverables/)
 
 ---
 
