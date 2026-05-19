@@ -1,10 +1,10 @@
 # Esquemas NoSQL
 
+## Descripción
+
 Definiciones de esquemas y diseños para las bases de datos NoSQL del proyecto. Incluye estructuras de colecciones, documentos de muestra y estrategias de indexación.
 
-## Propósito
-
-Documentar el diseño y estructura de los esquemas NoSQL para asegurar consistencia en el modelado de datos y optimización de rendimiento.
+Documenta el diseño y estructura de los esquemas NoSQL para asegurar consistencia en el modelado de datos y optimización de rendimiento.
 
 ## Estructura del Directorio
 
@@ -20,6 +20,3 @@ Este directorio no contiene subniveles adicionales; se enfoca en documentación 
 | Adrián Pérez Jímenez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
 | Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | 😐 No ha revisado. |
 
-## Formatos de Archivos
-
-Aquí encontrarás archivos de esquemas en formatos .json, .yaml, diagramas en .png o .svg, y documentación en .md sobre el diseño de datos.

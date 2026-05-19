@@ -1,10 +1,10 @@
 # Respaldos NoSQL
 
+## Descripción
+
 Archivos de respaldo y documentación relacionada con las bases de datos NoSQL del proyecto. Incluye respaldos completos, incrementales y snapshots para recuperación de datos.
 
-## Propósito
-
-Asegurar la disponibilidad y recuperación de datos en bases de datos NoSQL mediante procedimientos de respaldo estandarizados.
+Asegura la disponibilidad y recuperación de datos en bases de datos NoSQL mediante procedimientos de respaldo estandarizados.
 
 ## Estructura del Directorio
 
@@ -20,6 +20,3 @@ Este directorio no contiene subniveles adicionales; se enfoca en documentación 
 | Adrián Pérez Jímenez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
 | Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | 😐 No ha revisado. |
 
-## Formatos de Archivos
-
-Aquí encontrarás archivos de respaldo en formatos como .tar, .zip, scripts de respaldo en .sh o .py, y documentación en .md sobre procedimientos de respaldo y recuperación.

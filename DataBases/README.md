@@ -2,11 +2,11 @@
 
 ![NoSQL](https://img.shields.io/badge/NoSQL-MongoDB-brightgreen) ![SQL](https://img.shields.io/badge/SQL-Relacional-blue) ![Navicat](https://img.shields.io/badge/Tool-Navicat-blueviolet)
 
+## Descripción
+
 Este directorio contiene toda la documentación relacionada con las bases de datos del proyecto PC-Hospital-UDN-Maxercise, organizada por tipo de base de datos (NoSQL y SQL).
 
-## Propósito
-
-Proporcionar una estructura organizada para la documentación de bases de datos, facilitando el acceso a información sobre esquemas, respaldos y diseños de datos.
+Proporciona una estructura organizada para la documentación de bases de datos, facilitando el acceso a información sobre esquemas, respaldos y diseños de datos.
 
 ## Estructura del Directorio
 
