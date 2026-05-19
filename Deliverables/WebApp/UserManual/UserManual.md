@@ -1,18 +1,23 @@
-# UserManual
+# Manual de Usuario Web
+
+![Format](https://img.shields.io/badge/Format-Markdown-blue) ![Doc](https://img.shields.io/badge/Doc-User%20Guide-green) ![Type](https://img.shields.io/badge/Type-Manual-orange)
 
 ## Descripción
+
 Esta carpeta contiene la documentación de uso de la aplicación web para usuarios finales.
 
-## Contenido esperado
-Aquí se pueden almacenar:
+Ayuda a los usuarios a comprender y utilizar correctamente la aplicación web mediante manuales funcionales, guías de navegación, tutoriales, capturas de pantalla y guías de solución de problemas.
 
-- Manuales funcionales
-- Guías de navegación
-- Tutoriales
-- Procedimientos de operación
-- Casos de uso
-- Capturas de pantalla
-- Solución de problemas frecuentes
+## Estructura del Directorio
 
-## Objetivo
-Ayudar a los usuarios a comprender y utilizar correctamente la aplicación web.
+Este directorio no contiene subniveles adicionales; se enfoca en manuales de usuario y guías de uso de la aplicación web.
+
+## Colaboradores
+
+| Integrante | Contacto | Rol | OBSERVACIONES |
+| :--- | :--- | :--- | :--- |
+| Jesús Domínguez Ramírez | [@hesuh05](https://github.com/hesuh05) | Desarrollador Backend (y Administración de Bases de Datos) | 😸 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | [@Jonathan2536](https://github.com/Jonathan2536) | Desarrollador Backend | 😸 No ha revisado. |
+| Luís Daniel Suárez Escamilla | [@Danny88e](https://github.com/Danny88e) | Administración de Bases de Datos (y Documentación) | 😸 No ha revisado. |
+| Adrián Pérez Jiménez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | 😸 No ha revisado. |
+| Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | 😸 No ha revisado. |

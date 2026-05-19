@@ -1,19 +1,23 @@
-# Backend
+# Backend Web
+
+![Server](https://img.shields.io/badge/Server-Node.js-green) ![Database](https://img.shields.io/badge/Database-SQL%20%2F%20NoSQL-blue) ![Auth](https://img.shields.io/badge/Auth-JWT-orange)
 
 ## Descripción
+
 Esta carpeta contiene el código fuente backend de la aplicación web.
 
-## Contenido esperado
-Aquí se pueden almacenar:
+Gestiona toda la lógica del servidor y procesamiento de información de la aplicación web, incluyendo APIs, servicios de lógica de negocio, middleware, acceso a base de datos y validaciones de seguridad/autenticación.
 
-- APIs
-- Servicios
-- Lógica de negocio
-- Acceso a base de datos
-- Middleware
-- Validaciones
-- Autenticación y autorización
-- Integraciones externas
+## Estructura del Directorio
 
-## Objetivo
-Gestionar toda la lógica del servidor y procesamiento de información de la aplicación web.
+Este directorio no contiene subniveles adicionales; se enfoca en la lógica del lado servidor de la aplicación web.
+
+## Colaboradores
+
+| Integrante | Contacto | Rol | OBSERVACIONES |
+| :--- | :--- | :--- | :--- |
+| Jesús Domínguez Ramírez | [@hesuh05](https://github.com/hesuh05) | Desarrollador Backend (y Administración de Bases de Datos) | 😸 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | [@Jonathan2536](https://github.com/Jonathan2536) | Desarrollador Backend | 😸 No ha revisado. |
+| Luís Daniel Suárez Escamilla | [@Danny88e](https://github.com/Danny88e) | Administración de Bases de Datos (y Documentación) | 😸 No ha revisado. |
+| Adrián Pérez Jiménez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | 😸 No ha revisado. |
+| Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | 😸 No ha revisado. |
