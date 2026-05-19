@@ -1,5 +1,7 @@
 # 📊 Supervised_LMs
+
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat) ![Classification](https://img.shields.io/badge/Classification-ML-brightgreen?style=flat) ![Regression](https://img.shields.io/badge/Regression-ML-blueviolet?style=flat) ![Neural--Networks](https://img.shields.io/badge/Neural--Networks-DL-ff69b4?style=flat)
+
 ## 📋 Descripción
 
 Carpeta con modelos de Machine Learning supervisados entrenados con datos etiquetados para diagnóstico asistido, predicción de eventos clínicos y clasificación de riesgos.
