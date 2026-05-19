@@ -1,47 +1,23 @@
-# Unsupervised Learning Models
+# 🔍 Unsupervised_LMs
 
-Documentación y modelos de aprendizaje no supervisado para el proyecto PC-Hospital-UDN-Gerencia.
+![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat) ![Clustering](https://img.shields.io/badge/Clustering-ML-green?style=flat) ![PCA](https://img.shields.io/badge/PCA-Dimensionality-yellow?style=flat) ![Anomaly--Detection](https://img.shields.io/badge/Anomaly--Detection-Security-red?style=flat)
 
-## Descripción
+## 📋 Descripción
 
-Esta carpeta contiene modelos de machine learning que descubren patrones y estructuras en datos sin etiquetar. Se utilizan para análisis exploratorio, segmentación de datos y detección de anomalías.
+Carpeta con modelos de Machine Learning no supervisados para descubrimiento automático de patrones en datos sin etiquetas, clustering y detección de anomalías.
 
-## Modelos Incluidos
+---
 
-- Modelos de clustering para segmentación de pacientes
-- Análisis de componentes principales (PCA) para reducción de dimensionalidad
-- Detección de anomalías y patrones inusuales
-- Análisis de asociación en datos médicos
+## 👥 Colaboradores
 
-## Estructura de Archivos
+| Integrante | Contacto | Rol | OBSERVACIONES |
+|-----------|----------|-----|---------------|
+| Jesús Domínguez Ramírez | @hesuh05 | Desarrollador Backend (y Administración de Bases de Datos) | 😐 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | 😐 No ha revisado. |
+| Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | 😐 No ha revisado. |
+| Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
 
-```
-Unsupervised_LMs/
-├── [Archivos de modelos y documentación]
-└── README.md
-```
+---
 
-## Características
-
-- Algoritmos de clustering eficientes
-- Reducción de dimensionalidad
-- Detección de anomalías
-- Visualizaciones de resultados
-- Análisis interpretables
-
-## Requisitos
-
-- Python 3.8+
-- Librerías de ML (scikit-learn, pandas, numpy)
-- Datos sin etiquetar para análisis
-
-## Aplicaciones
-
-- Segmentación de población de pacientes
-- Identificación de subgrupos de riesgo
-- Análisis exploratorio de datos médicos
-- Detección de casos atípicos
-
-## Notas
-
-Para información detallada sobre cada modelo específico, consulte la documentación en los archivos correspondientes.
+**⏰ Última actualización:** Mayo 2026

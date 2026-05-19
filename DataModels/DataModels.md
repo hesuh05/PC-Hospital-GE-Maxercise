@@ -1,30 +1,37 @@
-# 📊 Modelos de Datos (DataModels)
+# 📊 DataModels
 
-## Descripción
+![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat) ![TensorFlow](https://img.shields.io/badge/TensorFlow-ML-orange?style=flat) ![scikit--learn](https://img.shields.io/badge/scikit--learn-ML-green?style=flat) ![pandas](https://img.shields.io/badge/pandas-Data-red?style=flat) ![numpy](https://img.shields.io/badge/numpy-Computing-yellow?style=flat)
 
-Carpeta con modelos de Machine Learning implementados para predicción clínica, identificación de patrones, optimización de procesos y soporte a toma de decisiones.
+## 📋 Descripción
 
-## Contenido Esperado
-
-```
-DataModels/
-├── Supervised_LMs/     - Modelos con datos etiquetados
-└── Unsupervised_LMs/   - Modelos sin etiquetas (clustering, análisis)
-
-```
-
-## Objetivo
-
-Proporcionar modelos de ML validados y documentados para predicción clínica, diagnóstico asistido y análisis de patrones en datos hospitalarios.
-
-## Modelos Principales
-
-| Tipo | Descripción | Casos de Uso |
-|------|-------------|-------------|
-| **Supervisados** | Con datos etiquetados | Diagnóstico, predicción, clasificación |
-| **No Supervisados** | Sin etiquetas | Clustering, patrones, segmentación |
+Carpeta con modelos de Machine Learning implementados para predicción clínica, identificación de patrones, optimización de procesos y soporte a la toma de decisiones en el contexto hospitalario.
 
 ---
 
-**Última actualización:** Mayo 2026
+## 📁 Estructura de Subdirectorios
+
+```
+DataModels/
+├── Supervised_LMs/
+│   └── Modelos con datos etiquetados
+│
+└── Unsupervised_LMs/
+    └── Modelos sin etiquetas (clustering, análisis)
+```
+
+---
+
+## 👥 Colaboradores
+
+| Integrante | Contacto | Rol | OBSERVACIONES |
+|-----------|----------|-----|---------------|
+| Jesús Domínguez Ramírez | @hesuh05 | Desarrollador Backend (y Administración de Bases de Datos) | 😐 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | 😐 No ha revisado. |
+| Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | 😐 No ha revisado. |
+| Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
+
+---
+
+**⏰ Última actualización:** Mayo 2026
 

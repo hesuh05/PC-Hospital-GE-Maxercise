@@ -1,38 +1,21 @@
-# Supervised Learning Models
+# 📊 Supervised_LMs
+![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat) ![Classification](https://img.shields.io/badge/Classification-ML-brightgreen?style=flat) ![Regression](https://img.shields.io/badge/Regression-ML-blueviolet?style=flat) ![Neural--Networks](https://img.shields.io/badge/Neural--Networks-DL-ff69b4?style=flat)
+## 📋 Descripción
 
-Documentación y modelos de aprendizaje supervisado para el proyecto PC-Hospital-UDN-Gerencia.
+Carpeta con modelos de Machine Learning supervisados entrenados con datos etiquetados para diagnóstico asistido, predicción de eventos clínicos y clasificación de riesgos.
 
-## Descripción
+---
 
-Esta carpeta contiene modelos de machine learning entrenados con datos etiquetados. Estos modelos se utilizan para tareas predictivas, de clasificación y análisis diagnóstico.
+## 👥 Colaboradores
 
-## Modelos Incluidos
+| Integrante | Contacto | Rol | OBSERVACIONES |
+|-----------|----------|-----|---------------|
+| Jesús Domínguez Ramírez | @hesuh05 | Desarrollador Backend (y Administración de Bases de Datos) | 😐 No ha revisado. |
+| Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | 😐 No ha revisado. |
+| Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | 😐 No ha revisado. |
+| Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
 
-- Modelos de clasificación para diagnósticos
-- Modelos de regresión para predicción de variables continuas
-- Sistemas de recomendación basados en datos históricos
+---
 
-## Estructura de Archivos
-
-```
-Supervised_LMs/
-├── [Archivos de modelos y documentación]
-└── README.md
-```
-
-## Características
-
-- Modelos validados y testeados
-- Documentación de performance y métricas
-- Guías de implementación y deployment
-- Ejemplos de uso
-
-## Requisitos
-
-- Python 3.8+
-- Librerías de ML estándar (scikit-learn, TensorFlow, etc.)
-- Datos de entrenamiento etiquetados
-
-## Notas
-
-Para información detallada sobre cada modelo específico, consulte la documentación en los archivos correspondientes.
+**⏰ Última actualización:** Mayo 2026
