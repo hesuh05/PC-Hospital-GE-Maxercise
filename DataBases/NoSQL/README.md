@@ -2,11 +2,11 @@
 
 ![NoSQL](https://img.shields.io/badge/NoSQL-MongoDB-brightgreen) ![Navicat](https://img.shields.io/badge/Tool-Navicat-blueviolet)
 
+## Descripción
+
 Documentación y recursos para las bases de datos NoSQL utilizadas en el proyecto PC-Hospital-UDN-Maxercise. Incluye información sobre bases de datos como MongoDB, Cassandra y otras NoSQL.
 
-## Propósito
-
-Centralizar la documentación de bases de datos NoSQL, proporcionando recursos para el diseño, respaldo y mantenimiento de estas bases de datos.
+Centraliza la documentación de bases de datos NoSQL, proporcionando recursos para el diseño, respaldo y mantenimiento de estas bases de datos.
 
 ## Estructura del Directorio
 

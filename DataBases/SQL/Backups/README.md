@@ -1,10 +1,10 @@
 # Respaldos SQL
 
+## Descripción
+
 Archivos de respaldo y documentación relacionada con las bases de datos SQL del proyecto. Incluye respaldos completos, diferenciales y de logs para recuperación de datos.
 
-## Propósito
-
-Implementar estrategias de respaldo robustas para bases de datos SQL, garantizando la recuperación de datos en caso de fallos o pérdidas.
+Implementa estrategias de respaldo robustas para bases de datos SQL, garantizando la recuperación de datos en caso de fallos o pérdidas.
 
 ## Estructura del Directorio
 
@@ -20,6 +20,3 @@ Este directorio no contiene subniveles adicionales; se enfoca en documentación 
 | Adrián Pérez Jímenez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
 | Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | 😐 No ha revisado. |
 
-## Formatos de Archivos
-
-Aquí encontrarás archivos de respaldo en formatos .bak, .sql (dumps), scripts de respaldo en .sh, .bat o .sql, y documentación en .md sobre procedimientos de respaldo y recuperación.

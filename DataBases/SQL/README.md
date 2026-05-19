@@ -2,11 +2,11 @@
 
 ![SQL](https://img.shields.io/badge/SQL-Relacional-blue) ![Navicat](https://img.shields.io/badge/Tool-Navicat-blueviolet)
 
+## Descripción
+
 Documentación y recursos para las bases de datos SQL relacionales utilizadas en el proyecto PC-Hospital-UDN-Maxercise. Incluye información sobre bases de datos como MySQL, PostgreSQL y otras SQL.
 
-## Propósito
-
-Proporcionar documentación completa para bases de datos SQL, incluyendo diseños, respaldos y modelos relacionales para asegurar la integridad y eficiencia de los datos.
+Proporciona documentación completa para bases de datos SQL, incluyendo diseños, respaldos y modelos relacionales para asegurar la integridad y eficiencia de los datos.
 
 ## Estructura del Directorio
 

@@ -1,10 +1,10 @@
 # Diagramas ERD
 
+## Descripción
+
 Diagramas Entidad-Relación que ilustran la estructura y relaciones de las bases de datos SQL del proyecto. Incluye diagramas conceptuales, lógicos y físicos.
 
-## Propósito
-
-Visualizar y comunicar el diseño de la base de datos SQL, facilitando la comprensión de entidades, atributos y relaciones para stakeholders técnicos y no técnicos.
+Visualiza y comunica el diseño de la base de datos SQL, facilitando la comprensión de entidades, atributos y relaciones para stakeholders técnicos y no técnicos.
 
 ## Estructura del Directorio
 
@@ -20,6 +20,3 @@ Este directorio no contiene subniveles adicionales; se enfoca en documentación 
 | Adrián Pérez Jímenez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | 😐 No ha revisado. |
 | Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | 😐 No ha revisado. |
 
-## Formatos de Archivos
-
-Aquí encontrarás diagramas en formatos .png, .svg, .pdf, archivos editables en .erd, .drawio o .vsd, y documentación en .md sobre la estructura de la base de datos.
