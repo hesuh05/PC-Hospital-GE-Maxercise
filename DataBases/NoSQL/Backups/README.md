@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Archivos de respaldo y documentación relacionada con las bases de datos NoSQL del proyecto. Incluye respaldos completos, incrementales y snapshots para recuperación de datos.
+Archivos de respaldo y documentación relacionada con las bases de datos NoSQL del proyecto. Incluye respaldos completos para recuperación de datos.
 
 Asegura la disponibilidad y recuperación de datos en bases de datos NoSQL mediante procedimientos de respaldo estandarizados.
 

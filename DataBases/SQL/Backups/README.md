@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Archivos de respaldo y documentación relacionada con las bases de datos SQL del proyecto. Incluye respaldos completos, diferenciales y de logs para recuperación de datos.
+Archivos de respaldo y documentación relacionada con las bases de datos SQL del proyecto. Incluye respaldos completos para recuperación de datos.
 
 Implementa estrategias de respaldo robustas para bases de datos SQL, garantizando la recuperación de datos en caso de fallos o pérdidas.
 
