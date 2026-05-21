@@ -40,7 +40,7 @@ Centralizar la gestión hospitalaria en una plataforma unificada, mejorando efic
 
 | Integrante | Contacto | Rol | Observaciones |
 |-----------|----------|-----|---------------|
-| **Jesus Dominguez Ramirez** | @jesusdominguez | Líder de Desarrollo FrontEnd | ✅ Revisado y aprobado |
+| **Jesus Dominguez Ramirez** | @jesusdominguez | Líder de Desarrollo FrontEnd | ✅ Revisado y aprobado. |
 | **Adrian Perez Jimenez** | @adrianperez | Desarrollador de DataBases | ✅ Revisado y aprobado |
 | **Luis Daniel Suarez Escamilla** | @luisdaniel | Desarrollador FrontEnd | ✅ Revisado y aprobado |
 | **Jonathan Emanuel Lopez Morales** | @jonathan | Desarrollador Backend | ✅ Revisado y aprobado |
