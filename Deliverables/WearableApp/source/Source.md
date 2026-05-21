@@ -1,0 +1,29 @@
+# Código Fuente Wearable
+
+![Language](https://img.shields.io/badge/Language-Kotlin-purple)  ![Platform](https://img.shields.io/badge/Platform-WearOS-blue)  ![Structure](https://img.shields.io/badge/Structure-Modular-orange)
+
+## Descripción
+
+Esta carpeta contiene el código fuente principal de la aplicación wearable, dividido en componentes de cliente (frontend) y servidor (backend).
+
+Centraliza la implementación funcional y lógica de la aplicación, facilitando la interacción del usuario final en dispositivos vestibles y la sincronización de datos.
+
+## Estructura del Directorio
+
+```text
+source/
+├── backend/
+│   └── backend.md
+└── frontend/
+    └── frontend.md
+```
+
+## Colaboradores
+
+| Integrante | Contacto | Rol | OBSERVACIONES |
+| :--- | :--- | :--- | :--- |
+| Jesús Domínguez Ramírez | [@hesuh05](https://github.com/hesuh05) | Desarrollador Backend (y Administración de Bases de Datos) | ✅ Revisado y aprobado. |
+| Jonathan Emmanuel Lopez Morales | [@Jonathan2536](https://github.com/Jonathan2536) | Desarrollador Backend | 😸 No ha revisado. |
+| Luís Daniel Suárez Escamilla | [@Danny88e](https://github.com/Danny88e) | Administración de Bases de Datos (y Documentación) | 😸 No ha revisado. |
+| Adrián Pérez Jiménez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | 😸 No ha revisado. |
+| Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | 😸 No ha revisado. |

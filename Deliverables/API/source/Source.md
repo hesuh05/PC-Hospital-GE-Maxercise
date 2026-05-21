@@ -1,20 +1,23 @@
-# Source
+# Código Fuente API
+
+![Language](https://img.shields.io/badge/Language-JavaScript-yellow) ![Framework](https://img.shields.io/badge/Framework-Express-lightgrey) ![Database](https://img.shields.io/badge/Database-MongoDB-green)
 
 ## Descripción
+
 Esta carpeta contiene el código fuente principal de la API del sistema.
 
-## Contenido esperado
-Aquí se pueden almacenar:
+Centraliza la implementación funcional y lógica de la API para el procesamiento de datos y la comunicación con clientes, conteniendo controladores, servicios, rutas, modelos, validaciones y lógica de negocio.
 
-- Controladores
-- Servicios
-- Rutas
-- Modelos
-- Middleware
-- Configuración de conexión a base de datos
-- Lógica de negocio
-- Validaciones
-- Utilidades y helpers
+## Estructura del Directorio
 
-## Objetivo
-Centralizar la implementación funcional y lógica de la API para el procesamiento de datos y comunicación con clientes.
+Este directorio no contiene subniveles adicionales; se enfoca en el código fuente principal de la API.
+
+## Colaboradores
+
+| Integrante | Contacto | Rol | OBSERVACIONES |
+| :--- | :--- | :--- | :--- |
+| Jesús Domínguez Ramírez | [@hesuh05](https://github.com/hesuh05) | Desarrollador Backend (y Administración de Bases de Datos) | ✅ Revisado y aprobado. |
+| Jonathan Emmanuel Lopez Morales | [@Jonathan2536](https://github.com/Jonathan2536) | Desarrollador Backend | 😸 No ha revisado. |
+| Luís Daniel Suárez Escamilla | [@Danny88e](https://github.com/Danny88e) | Administración de Bases de Datos (y Documentación) | 😸 No ha revisado. |
+| Adrián Pérez Jiménez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | 😸 No ha revisado. |
+| Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | 😸 No ha revisado. |

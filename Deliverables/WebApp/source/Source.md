@@ -1,16 +1,22 @@
-# Backend Web
+# Código Fuente Web
 
-![Server](https://img.shields.io/badge/Server-Node.js-green) ![Database](https://img.shields.io/badge/Database-SQL%20%2F%20NoSQL-blue) ![Auth](https://img.shields.io/badge/Auth-JWT-orange)
+![Language](https://img.shields.io/badge/Language-JavaScript-yellow)  ![Framework](https://img.shields.io/badge/Framework-React-blue)  ![Style](https://img.shields.io/badge/Style-CSS3-orange)
 
 ## Descripción
 
-Esta carpeta contiene el código fuente backend de la aplicación web.
+Esta carpeta contiene el código fuente principal de la aplicación web, dividido en componentes de interfaz gráfica (frontend) y lógica de servidor (backend).
 
-Gestiona toda la lógica del servidor y procesamiento de información de la aplicación web, incluyendo APIs, servicios de lógica de negocio, middleware, acceso a base de datos y validaciones de seguridad/autenticación.
+Centraliza la implementación funcional de la plataforma web, permitiendo el despliegue del portal administrativo y de usuario.
 
 ## Estructura del Directorio
 
-Este directorio no contiene subniveles adicionales; se enfoca en la lógica del lado servidor de la aplicación web.
+```text
+source/
+├── backend/
+│   └── backend.md
+└── frontend/
+    └── frontend.md
+```
 
 ## Colaboradores
 
