@@ -29,7 +29,7 @@ DataModels/
 | Jonathan Emmanuel Lopez Morales | @Jonathan2536 | Desarrollador Backend | ✅ Revisado y aprobado. |
 | Luís Daniel Suárez Escamílla | @Danny88e | Administración de Bases de Datos (y Documentación) | ✅ Revisado y aprobado. |
 | Adrián Pérez Jímenez | @heidrihen52 | Desarrollador Frontend (y Documentación) | ✅ Revisado y aprobado. |
-| Sayurid Bautista Cruz | @sayuridbc | Documentación | 😐 No ha revisado. |
+| Sayurid Bautista Cruz | @sayuridbc | Documentación | ✅ Revisado y aprobado. |
 
 ---
 
