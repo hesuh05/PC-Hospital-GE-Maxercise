@@ -2,9 +2,13 @@
 
 ## Descripción
 
-Archivos de respaldo y documentación relacionada con las bases de datos NoSQL del proyecto. Incluye respaldos completos para recuperación de datos.
+Este directorio contiene archivos de respaldo y documentación relacionada con las bases de datos NoSQL del proyecto. Incluye respaldos de cada colección para recuperación de datos, asegurando la disponibilidad y recuperación mediante procedimientos de respaldo estandarizados.
 
-Asegura la disponibilidad y recuperación de datos en bases de datos NoSQL mediante procedimientos de respaldo estandarizados.
+## Tabla de respaldos
+
+| Fecha       | Backup de datos (Google Drive) | Colección incluida         | Total de documentos |
+|------------|--------------------------------|---------------------------|---------------------|
+| 09/03/2026 | [📥 Descargar](https://drive.google.com/drive/folders/1kUFQgzkNEOC42cnBYsvInpauA0pSXeAi?usp=drive_link) | quejas_sugerencias         | 500,002             |
 
 ## Estructura del Directorio
 
