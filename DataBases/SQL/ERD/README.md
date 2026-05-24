@@ -4,6 +4,8 @@
 
 Diagramas Entidad-Relación que ilustran la estructura y relaciones de las bases de datos SQL del proyecto. Incluye diagramas conceptuales, lógicos y físicos.
 
+NOTA: Nuestras tablas no cuentan con herencia, por lo que no aplica el Extended Relational Diagram (ERD extendido).
+
 Visualiza y comunica el diseño de la base de datos SQL, facilitando la comprensión de entidades, atributos y relaciones para stakeholders técnicos y no técnicos.
 
 ## Estructura del Directorio

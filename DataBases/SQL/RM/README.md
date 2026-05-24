@@ -2,13 +2,11 @@
 
 ## Descripción
 
-Documentación del modelo relacional y principios de diseño para las bases de datos SQL del proyecto. Incluye normalización, álgebra relacional y dependencias funcionales.
-
-Explica los fundamentos teóricos del modelo relacional aplicado en el diseño de bases de datos SQL, asegurando mejores prácticas en la estructuración de datos.
+Este directorio contiene únicamente la imagen (formato PNG) del Modelo Relacional (Relational Model) de la base de datos MySQL utilizada en el proyecto.
 
 ## Estructura del Directorio
 
-Este directorio no contiene subniveles adicionales; se enfoca en documentación del modelo relacional.
+Este directorio solo incluye el archivo PNG correspondiente al modelo relacional.
 
 ## Colaboradores
 
