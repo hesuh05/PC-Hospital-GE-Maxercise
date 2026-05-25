@@ -488,13 +488,13 @@ Tras la ejecución de toda la suite de pruebas automatizadas, el módulo analít
 | Test 1 | 350,000 | Quejas y Sugerencias (Masivo Aleatorio) | 333.10 s | 🟢 Éxito |
 | Test 2 | 50,000 | Quejas y Sugerencias (Filtro Urgencias) | 58.70 s | 🟢 Éxito |
 | Test 3 | 10,000 | Quejas y Sugerencias (Personal ID 7) | 8.61 s | 🟢 Éxito |
-| Test 4 | 150,000 | Solicitudes de Servicio (Capa 1 Coherencia) | 142.50 s | 🟢 Éxito |
-| Test 5 | 80,000 | Solicitudes de Servicio (Flujo Cruzado) | 76.20 s | 🟢 Éxito |
-| Test 6 | 20,000 | Solicitudes de Servicio (Filtro Especialista) | 18.90 s | 🟢 Éxito |
-| Test 7 | 50,000 | Solicitudes de Servicio (Flags Negativas) | 45.10 s | 🟢 Éxito |
-| Test 8 | 40,000 | Aprobaciones (Procesamiento Atrasado) | 37.80 s | 🟢 Éxito |
-| Test 9 | 15,000 | Aprobaciones (Cierre Lógico Guillotina) | 14.30 s | 🟢 Éxito |
-| Test 10 | 100,000 | Aprobaciones (Avalancha por Lotes) | 92.40 s | 🟢 Éxito |
-| **TOTAL** | **865,000** | Ecosistema Integrado de Datos | **827.65 s** | Estable |
+| Test 4 | 150,000 | Solicitudes de Servicio (Capa 1 Coherencia) | 61.24 s | 🟢 Éxito |
+| Test 5 | 80,000 | Solicitudes de Servicio (Flujo Cruzado) | 56.08 s | 🟢 Éxito |
+| Test 6 | 20,000 | Solicitudes de Servicio (Filtro Especialista) | 7.76 s | 🟢 Éxito |
+| Test 7 | 50,000 | Solicitudes de Servicio (Flags Negativas) | 16.49 s | 🟢 Éxito |
+| Test 8 | 40,000 | Aprobaciones (Procesamiento Atrasado) | 21.40 s | 🟢 Éxito |
+| Test 9 | 15,000 | Aprobaciones (Cierre Lógico Guillotina) | 12.22 s | 🟢 Éxito |
+| Test 10 | 100,000 | Aprobaciones (Avalancha por Lotes) | 75.16 s | 🟢 Éxito |
+| **TOTAL** | **865,000** | Ecosistema Integrado de Datos | **650.76 s** | Estable |
 
 **Nota:** el total real mostrado en los tableros analíticos puede variar ligeramente si existían registros de control previos a las pruebas de estrés.
