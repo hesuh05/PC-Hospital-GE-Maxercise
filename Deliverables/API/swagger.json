@@ -1,0 +1,1125 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Gerencia Hospital",
+    "version": "1.0.0",
+    "description": "Documentación interactiva de la API del Hospital"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Mongo Seeder",
+      "description": "Endpoints para poblar y limpiar colecciones MongoDB de pruebas."
+    },
+    {
+      "name": "Mongo CRUD",
+      "description": "Endpoints CRUD manuales para documentos MongoDB."
+    },
+    {
+      "name": "Quejas y Sugerencias",
+      "description": "Endpoints de quejas y sugerencias."
+    }
+  ],
+  "paths": {
+    "/gerencia/quejas-sugerencias/limpiar": {
+      "delete": {
+        "summary": "Vaciar la colección de quejas y sugerencias",
+        "tags": [
+          "Quejas y Sugerencias"
+        ],
+        "description": "Elimina de forma permanente todos los documentos en la colección de MongoDB de Quejas y Sugerencias.",
+        "responses": {
+          "200": {
+            "description": "Colección limpiada exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Colección de Quejas y Sugerencias limpiada exitosamente."
+                    },
+                    "deletedCount": {
+                      "type": "integer",
+                      "example": 15
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Error interno al intentar vaciar la colección."
+                    },
+                    "details": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gerencia/quejas-sugerencias/poblar": {
+      "post": {
+        "summary": "Poblar quejas y sugerencias masivamente",
+        "tags": ["Quejas y Sugerencias"],
+        "description": "Genera datos aleatorios y realistas de quejas y sugerencias en MongoDB. Permite filtrar la generación por área, departamento o forzar a un empleado específico.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cantidad": { "type": "integer", "example": 15 },
+                  "tipo": { "type": "string", "enum": ["queja", "sugerencia"], "nullable": true, "example": null },
+                  "prioridad": { "type": "string", "enum": ["baja", "media", "alta", "urgente"], "nullable": true, "example": null },
+                  "estatus": { "type": "string", "enum": ["registrada", "en_revision", "en_proceso", "atendida", "cerrada", "cancelada"], "nullable": true, "example": null },
+                  "medio_recepcion": { "type": "string", "enum": ["buzon", "web", "telefono", "presencial", "app"], "nullable": true, "example": null },
+                  "con_seguimiento": { "type": "string", "enum": ["si", "no", "aleatorio"], "nullable": true, "example": "aleatorio" },
+                  "area_id": { "type": "integer", "nullable": true, "example": null, "description": "ID del área para restringir la generación." },
+                  "departamento_id": { "type": "integer", "nullable": true, "example": null, "description": "ID del departamento para restringir la generación." },
+                  "personal_id": { "type": "integer", "nullable": true, "example": null, "description": "ID del empleado sobre el cual recaerá la queja/sugerencia." }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { 
+            "description": "Registros generados con éxito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "50000 registros generados exitosamente." },
+                    "tiempo_ejecucion": { "type": "string", "example": "14.35 segundos" },
+                    "warning": { "type": "string", "example": "Los datos generados han sido omitidos de la respuesta para no saturar tu cliente de red." }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Incongruencia en los parámetros (Ej. el personal no pertenece al departamento indicado)." },
+          "404": { "description": "Área, Departamento o Personal no encontrado." },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/quejas-sugerencias": {
+      "get": {
+        "summary": "Obtener quejas y sugerencias paginadas",
+        "tags": ["Quejas y Sugerencias"],
+        "description": "Consulta la base de datos de MongoDB con soporte para paginación y filtros dinámicos.",
+        "parameters": [
+          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 }, "description": "Número de página a consultar." },
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 10 }, "description": "Cantidad de registros por página." },
+          { "name": "folio", "in": "query", "schema": { "type": "string" }, "description": "Búsqueda parcial por número de folio." },
+          { "name": "estatus", "in": "query", "schema": { "type": "string" }, "description": "Filtrar por estatus." },
+          { "name": "tipo", "in": "query", "schema": { "type": "string" }, "description": "Filtrar por tipo (queja o sugerencia)." },
+          { "name": "departamento", "in": "query", "schema": { "type": "string" }, "description": "Búsqueda parcial por nombre del departamento." },
+          { "name": "prioridad", "in": "query", "schema": { "type": "string" }, "description": "Filtrar por prioridad." }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista paginada devuelta exitosamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "totalRegistros": { "type": "integer", "example": 150 },
+                        "totalPaginas": { "type": "integer", "example": 15 },
+                        "paginaActual": { "type": "integer", "example": 1 },
+                        "registrosPorPagina": { "type": "integer", "example": 10 }
+                      }
+                    },
+                    "data": { "type": "array", "items": { "type": "object" } }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Error interno al consultar MongoDB." }
+        }
+      }
+    },
+    "/gerencia/pacientes": {
+      "get": {
+        "summary": "Obtener lista de pacientes",
+        "tags": ["Pacientes"],
+        "responses": {
+          "200": { "description": "Lista obtenida correctamente" }
+        }
+      }
+    },
+    "/gerencia/pacientes/limpiar": {
+      "delete": {
+        "summary": "Vaciar tabla de pacientes (Truncate)",
+        "tags": ["Pacientes"],
+        "responses": {
+          "200": { "description": "Tabla limpiada" }
+        }
+      }
+    },
+    "/gerencia/pacientes/poblar": {
+      "post": {
+        "summary": "Poblar pacientes mediante procedimiento almacenado",
+        "tags": ["Pacientes"],
+        "description": "Llama al SP sp_poblar_pacientes con 11 parámetros configurables para generar datos de prueba.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "p_cantidad": { "type": "integer", "default": 10, "description": "Cantidad de registros a generar" },
+                  "p_c_genero": { "type": "string", "enum": ["H", "M"], "default": "H" },
+                  "p_edad_minima": { "type": "integer", "default": 18 },
+                  "p_edad_maxima": { "type": "integer", "default": 99 },
+                  "p_estatus_vida": { "type": "string", "enum": ["Vivo", "Finado"], "default": "Vivo" },
+                  "p_modo_estatus_medico": { "type": "integer", "default": -1, "description": "-1 para aleatorio" },
+                  "p_estatus_medico": { "type": "string", "default": "Estable" },
+                  "p_tipo_edad": { "type": "string", "default": "adulto" },
+                  "p_modo_situacion_medica": { "type": "integer", "default": -1 },
+                  "p_situacion_medica": { "type": "string", "nullable": true, "default": null },
+                  "p_modo_titulo": { "type": "string", "nullable": true, "default": null }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Procedimiento ejecutado con éxito" },
+          "500": { "description": "Error al ejecutar el procedimiento" }
+        }
+      }
+    },
+    "/gerencia/patologias": {
+      "get": {
+        "summary": "Listar todas las patologías",
+        "tags": ["Patologías"],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "summary": "Crear nueva patología",
+        "tags": ["Patologías"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["nombre", "nombre_cientifico", "fecha_clasificacion"],
+                "properties": {
+                  "nombre": { "type": "string", "example": "Diabetes" },
+                  "nombre_cientifico": { "type": "string", "example": "Diabetes Mellitus" },
+                  "nombre_comun": { "type": "string", "example": "Azúcar" },
+                  "descripcion": { "type": "string", "example": "Trastorno metabólico crónico" },
+                  "fecha_clasificacion": { "type": "string", "format": "date", "example": "2026-03-10" },
+                  "tipos_ids": { "type": "array", "items": { "type": "integer" }, "example": [1, 2] }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Creada" } }
+      }
+    },
+    "/gerencia/patologias/{id}": {
+      "put": {
+        "summary": "Actualizar una patología",
+        "tags": ["Patologías"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": { "type": "string", "example": "Diabetes" },
+                  "nombre_cientifico": { "type": "string", "example": "Diabetes Mellitus" },
+                  "nombre_comun": { "type": "string", "example": "Azúcar" },
+                  "descripcion": { "type": "string", "example": "Trastorno metabólico crónico" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Actualizada" } }
+      },
+      "delete": {
+        "summary": "Eliminar una patología",
+        "tags": ["Patologías"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "responses": { "200": { "description": "Eliminada" } }
+      }
+    },
+    "/gerencia/organos": {
+      "get": { "summary": "Listar órganos", "tags": ["Orgános"], "responses": { "200": { "description": "OK" } } },
+      "post": {
+        "summary": "Crear órgano",
+        "tags": ["Orgános"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["Nombre", "Sistema_Aparato", "Stock", "Fecha_Registro"],
+                "properties": {
+                  "Nombre": { "type": "string", "example": "Corazón" },
+                  "Sistema_Aparato": { "type": "string", "example": "Circulatorio" },
+                  "Requisitos": { "type": "string", "example": "Condición A" },
+                  "Stock": { "type": "integer", "example": 20 },
+                  "Descripcion": { "type": "string", "example": "Órgano vital" },
+                  "Funcion": { "type": "string", "example": "Bombear sangre" },
+                  "Fecha_Registro": { "type": "string", "format": "date", "example": "2026-03-10" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Creado" } }
+      }
+    },
+    "/gerencia/organos/{id}": {
+      "get": { "summary": "Obtener órgano", "tags": ["Orgános"], "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }], "responses": { "200": { "description": "OK" } } },
+      "put": {
+        "summary": "Actualizar órgano",
+        "tags": ["Orgános"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Nombre": { "type": "string", "example": "Corazón" },
+                  "Sistema_Aparato": { "type": "string", "example": "Circulatorio" },
+                  "Requisitos": { "type": "string", "example": "Condición A" },
+                  "Stock": { "type": "integer", "example": 30 },
+                  "Descripcion": { "type": "string", "example": "Órgano vital" },
+                  "Funcion": { "type": "string", "example": "Bombear sangre" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Actualizado" } }
+      },
+      "delete": { "summary": "Eliminar órgano", "tags": ["Orgános"], "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }], "responses": { "200": { "description": "Eliminado" } } }
+    },
+    "/gerencia/areas": {
+      "get": { "summary": "Listar áreas", "tags": ["Áreas"], "responses": { "200": { "description": "OK" } } },
+      "post": {
+        "summary": "Crear área",
+        "tags": ["Áreas"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["nombre", "descripcion"],
+                "properties": {
+                  "nombre": { "type": "string", "example": "Emergencias" },
+                  "descripcion": { "type": "string", "example": "Área de atención inmediata" },
+                  "ubicacion_id": { "type": ["integer", "null"], "example": null },
+                  "personal_id_responsable": { "type": ["integer", "null"], "example": null },
+                  "area_superior_id": { "type": ["integer", "null"], "example": null },
+                  "estatus_operacion": { "type": "string", "example": "Activo" },
+                  "total_empleados": { "type": "integer", "example": 20 }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Creada" } }
+      }
+    },
+    "/gerencia/areas/{id}": {
+      "put": {
+        "summary": "Actualizar área",
+        "tags": ["Áreas"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": { "type": "string", "example": "Emergencias" },
+                  "descripcion": { "type": "string", "example": "Área de atención inmediata" },
+                  "estatus_operacion": { "type": "string", "example": "Mantenimiento" },
+                  "total_empleados": { "type": "integer", "example": 25 }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Actualizada" } }
+      },
+      "delete": { "summary": "Eliminar (lógico) área", "tags": ["Áreas"], "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }], "responses": { "200": { "description": "Eliminada" } } }
+    },
+    "/gerencia/aprobaciones/pendientes": {
+      "get": { "summary": "Ver solicitudes pendientes", "tags": ["Aprobaciones"], "responses": { "200": { "description": "Lista" } } }
+    },
+    "/gerencia/aprobaciones/historial": {
+      "get": { "summary": "Ver historial de aprobaciones", "tags": ["Aprobaciones"], "responses": { "200": { "description": "Lista" } } }
+    },
+    "/gerencia/aprobaciones": {
+      "post": {
+        "summary": "Crear solicitud de aprobación",
+        "tags": ["Aprobaciones"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["personal_id", "servicio_id", "servicio_descripcion"],
+                "properties": {
+                  "personal_id": { "type": "integer", "example": 123 },
+                  "servicio_id": { "type": "integer", "example": 45 },
+                  "servicio_descripcion": { "type": "string", "example": "Requiere aprobación para cirugía" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Creada" } }
+      }
+    },
+    "/gerencia/aprobaciones/{id}": {
+      "patch": {
+        "summary": "Procesar aprobacion",
+        "tags": ["Aprobaciones"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["decision"],
+                "properties": {
+                  "decision": { "type": "string", "enum": ["Aprobado", "Rechazado"], "example": "Aprobado" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Procesada" } }
+      }
+    },
+    "/gerencia/accesos": {
+      "get": { "summary": "Historial accesos", "tags": ["Accesos"], "responses": { "200": { "description": "OK" } } },
+      "post": {
+        "summary": "Registrar acceso",
+        "tags": ["Accesos"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["persona_id", "espacio_id", "tipo", "autoriza_id"],
+                "properties": {
+                  "persona_id": { "type": "integer", "example": 101 },
+                  "espacio_id": { "type": "integer", "example": 5 },
+                  "tipo": { "type": "string", "example": "Entrada" },
+                  "autoriza_id": { "type": "integer", "example": 12 }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Registrado" } }
+      }
+    },
+    "/gerencia/accesos/persona/{id}": {
+      "get": { "summary": "Accesos por persona", "tags": ["Accesos"], "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }], "responses": { "200": { "description": "OK" } } }
+    },
+    "/gerencia/accesos/fechas": {
+      "get": { "summary": "Accesos por rango fechas", "tags": ["Accesos"], "responses": { "200": { "description": "OK" } } }
+    },
+    "/gerencia/tipos": {
+      "get": { "summary": "Listar tipos patología", "tags": ["Patología Tipos"], "responses": { "200": { "description": "OK" } } },
+      "post": {
+        "summary": "Crear tipo patología",
+        "tags": ["Patología Tipos"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["nombre", "descripcion"],
+                "properties": {
+                  "nombre": { "type": "string", "example": "Oncológica" },
+                  "descripcion": { "type": "string", "example": "Tipo relacionado con cáncer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Creado" } }
+      }
+    },
+    "/gerencia/tipos/{id}/clasificacion": {
+      "get": { "summary": "Obtener clasificación por tipo", "tags": ["Patología Tipos"], "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }], "responses": { "200": { "description": "OK" } } }
+    },
+    "/gerencia/reporte-roles": {
+      "get": { "summary": "Reporte de roles", "tags": ["Vistas"], "responses": { "200": { "description": "OK" } } }
+    },
+    "/gerencia/inventario": {
+      "get": { "summary": "Listar inventario órganos", "tags": ["Inventario"], "responses": { "200": { "description": "OK" } } },
+      "post": {
+        "summary": "Agregar inventario órgano",
+        "tags": ["Inventario"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["Organo_ID", "Fecha_Expiracion", "Estado"],
+                "properties": {
+                  "Organo_ID": { "type": "integer", "example": 1 },
+                  "Fecha_Expiracion": { "type": "string", "format": "date", "example": "2026-12-31" },
+                  "Estado": { "type": "string", "example": "Disponible" },
+                  "Raza": { "type": "string", "example": "N/A" },
+                  "Grupo_Sanguineo": { "type": "string", "example": "O+" },
+                  "Observaciones": { "type": "string", "example": "Unidad de prueba" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Creado" } }
+      }
+    },
+    "/gerencia/inventario/{id}": {
+      "put": {
+        "summary": "Actualizar inventario órgano",
+        "tags": ["Inventario"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Organo_ID": { "type": "integer", "example": 1 },
+                  "Fecha_Expiracion": { "type": "string", "format": "date", "example": "2027-01-01" },
+                  "Estado": { "type": "string", "example": "Disponible" },
+                  "Raza": { "type": "string", "example": "N/A" },
+                  "Grupo_Sanguineo": { "type": "string", "example": "AB-" },
+                  "Observaciones": { "type": "string", "example": "Refrigerado" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Actualizado" } }
+      },
+      "delete": { "summary": "Eliminar inventario órgano", "tags": ["Inventario"], "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }], "responses": { "200": { "description": "Eliminado" } } }
+    },
+    "/gerencia/mongo/quejas": {
+      "post": {
+        "summary": "Registrar Queja/Sugerencia en MongoDB",
+        "tags": ["Gerencia NoSQL"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "folio": { "type": "string", "example": "QUE-001" },
+                  "tipo": { "type": "string", "enum": ["queja", "sugerencia"], "example": "queja" },
+                  "prioridad": { "type": "string", "example": "alta" },
+                  "descripcion": { "type": "string", "example": "Falta de insumos en piso 2" },
+                  "persona_fisica": { "type": "object", "properties": { "id": { "type": "integer", "example": 10 }, "nombre": { "type": "string", "example": "Jonathan" } } },
+                  "departamento": { "type": "object", "properties": { "id": { "type": "integer", "example": 5 }, "nombre": { "type": "string", "example": "Gerencia" } } }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Guardado en MongoDB" } }
+      },
+      "get": {
+        "summary": "Obtener todas las Quejas/Sugerencias",
+        "tags": ["Gerencia NoSQL"],
+        "responses": {
+          "200": {
+            "description": "Lista de quejas obtenida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cantidad": { "type": "integer", "example": 5 },
+                    "data": { "type": "array" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gerencia/mongo/quejas/{id}": {
+      "get": {
+        "summary": "Obtener Queja por ID",
+        "tags": ["Gerencia NoSQL"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Queja encontrada" }, "404": { "description": "Queja no encontrada" } }
+      },
+      "put": {
+        "summary": "Actualizar Queja",
+        "tags": ["Gerencia NoSQL"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "estatus": { "type": "string", "example": "en_proceso" },
+                  "prioridad": { "type": "string", "example": "alta" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Queja actualizada" }, "404": { "description": "Queja no encontrada" } }
+      },
+      "delete": {
+        "summary": "Eliminar Queja",
+        "tags": ["Gerencia NoSQL"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Queja eliminada" }, "404": { "description": "Queja no encontrada" } }
+      }
+    },
+    "/gerencia/mongo/aprobaciones/limpiar": {
+      "delete": {
+        "summary": "Vaciar la colección de aprobaciones",
+        "tags": ["Mongo Seeder"],
+        "responses": {
+          "200": {
+            "description": "Colección limpiada exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Colección de Aprobaciones limpiada exitosamente." },
+                    "deletedCount": { "type": "integer", "example": 100 }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/mongo/aprobaciones": {
+      "post": {
+        "summary": "Registrar Aprobación en MongoDB",
+        "tags": ["Mongo CRUD"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "entidad": { "type": "object", "properties": { "tipo": { "type": "string", "example": "Cirugia" }, "id": { "type": "integer", "example": 500 } } },
+                  "solicitante": { "type": "object", "properties": { "id": { "type": "integer", "example": 1 }, "nombre": { "type": "string", "example": "Dr. House" } } },
+                  "aprobador": { "type": "object", "properties": { "id": { "type": "integer", "example": 99 }, "nombre": { "type": "string", "example": "Director General" } } },
+                  "estatus": { "type": "string", "example": "pendiente" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Guardado en MongoDB" } }
+      },
+      "get": {
+        "summary": "Obtener aprobaciones paginadas",
+        "tags": ["Mongo CRUD"],
+        "parameters": [
+          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 }, "description": "Número de página a consultar." },
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 10 }, "description": "Cantidad de registros por página." }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de aprobaciones obtenida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "totalRegistros": { "type": "integer", "example": 150 },
+                        "totalPaginas": { "type": "integer", "example": 15 },
+                        "paginaActual": { "type": "integer", "example": 1 },
+                        "registrosPorPagina": { "type": "integer", "example": 10 }
+                      }
+                    },
+                    "data": { "type": "array", "items": { "type": "object" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gerencia/mongo/aprobaciones/{id}": {
+      "get": {
+        "summary": "Obtener Aprobación por ID",
+        "tags": ["Mongo CRUD"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Aprobación encontrada" }, "404": { "description": "Aprobación no encontrada" } }
+      },
+      "put": {
+        "summary": "Actualizar Aprobación",
+        "tags": ["Mongo CRUD"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "estatus": { "type": "string", "enum": ["pendiente", "aprobado", "rechazado"], "example": "aprobado" },
+                  "comentario": { "type": "string", "example": "Aprobado por el director" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Aprobación actualizada" }, "404": { "description": "Aprobación no encontrada" } }
+      },
+      "delete": {
+        "summary": "Eliminar Aprobación",
+        "tags": ["Mongo CRUD"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Aprobación eliminada" }, "404": { "description": "Aprobación no encontrada" } }
+      }
+    },
+    "/gerencia/mongo/servicios/limpiar": {
+      "delete": {
+        "summary": "Vaciar la colección de solicitudes de servicio",
+        "tags": ["Mongo Seeder"],
+        "responses": {
+          "200": {
+            "description": "Colección limpiada exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Colección de Solicitudes de Servicios limpiada exitosamente." },
+                    "deletedCount": { "type": "integer", "example": 100 }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/mongo/servicios": {
+      "post": {
+        "summary": "Registrar Solicitud de Servicio en MongoDB",
+        "tags": ["Mongo CRUD"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "folio": { "type": "string", "example": "SERV-2026-X" },
+                  "servicio": { "type": "object", "properties": { "id": { "type": "integer", "example": 20 }, "nombre": { "type": "string", "example": "Mantenimiento Aire" } } },
+                  "solicitante": { "type": "object", "properties": { "id": { "type": "integer", "example": 5 }, "nombre": { "type": "string", "example": "Admin Gerencia" } } },
+                  "area": { "type": "object", "properties": { "id": { "type": "integer", "example": 2 }, "nombre": { "type": "string", "example": "Sistemas" } } }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Guardado en MongoDB" } }
+      },
+      "get": {
+        "summary": "Obtener solicitudes de servicio paginadas",
+        "tags": ["Mongo CRUD"],
+        "parameters": [
+          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 }, "description": "Número de página a consultar." },
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 10 }, "description": "Cantidad de registros por página." }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de servicios obtenida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "totalRegistros": { "type": "integer", "example": 150 },
+                        "totalPaginas": { "type": "integer", "example": 15 },
+                        "paginaActual": { "type": "integer", "example": 1 },
+                        "registrosPorPagina": { "type": "integer", "example": 10 }
+                      }
+                    },
+                    "data": { "type": "array", "items": { "type": "object" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gerencia/mongo/servicios/{id}": {
+      "get": {
+        "summary": "Obtener Servicio por ID",
+        "tags": ["Mongo CRUD"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Servicio encontrado" }, "404": { "description": "Servicio no encontrado" } }
+      },
+      "put": {
+        "summary": "Actualizar Solicitud de Servicio",
+        "tags": ["Mongo CRUD"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "estatus": { "type": "string", "enum": ["pendiente", "en_proceso", "completado"], "example": "en_proceso" },
+                  "prioridad": { "type": "string", "example": "media" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Servicio actualizado" }, "404": { "description": "Servicio no encontrado" } }
+      },
+      "delete": {
+        "summary": "Eliminar Solicitud de Servicio",
+        "tags": ["Mongo CRUD"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Servicio eliminado" }, "404": { "description": "Servicio no encontrado" } }
+      }
+    },
+    "/gerencia/mongo/servicios/poblar": {
+      "post": {
+        "summary": "Poblar solicitudes de servicio masivamente",
+        "tags": ["Mongo Seeder"],
+        "description": "Genera solicitudes de servicio sintéticas en MongoDB y, opcionalmente, también puede autogenerar aprobaciones relacionadas.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cantidad": { "type": "integer", "example": 50, "description": "Cantidad de solicitudes a generar." },
+                  "servicio_id": { "type": "integer", "nullable": true, "example": null, "description": "ID de servicio para forzar la generación." },
+                  "area_id": { "type": "integer", "nullable": true, "example": null, "description": "ID de área para restringir los servicios." },
+                  "estatus": { "type": "string", "enum": ["pendiente", "en_proceso", "completado", "cancelado"], "nullable": true, "example": null },
+                  "prioridad": { "type": "string", "enum": ["baja", "media", "alta", "urgente"], "nullable": true, "example": null },
+                  "canal_origen": { "type": "string", "enum": ["web", "telefono", "app", "interno", "presencial"], "nullable": true, "example": null },
+                  "con_historial": { "type": "string", "enum": ["si", "no", "aleatorio"], "nullable": true, "example": "aleatorio" },
+                  "autogenerar_aprobaciones": { "type": "boolean", "example": false }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Solicitudes generadas exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "50 solicitudes generadas exitosamente." },
+                    "aprobaciones_auto_generadas": { "type": "string", "example": "No" },
+                    "tiempo_ejecucion": { "type": "string", "example": "2.40 segundos" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Filtros de Área/Servicio no coinciden con registros en MySQL." },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/mongo/aprobaciones/poblar": {
+      "post": {
+        "summary": "Poblar aprobaciones masivamente",
+        "tags": ["Mongo Seeder"],
+        "description": "Genera aprobaciones sintéticas en MongoDB usando solicitudes pendientes existentes, o puede generar solicitudes ocultas para enlazarlas automáticamente.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cantidad": { "type": "integer", "example": 50, "description": "Cantidad de aprobaciones a generar." },
+                  "estatus_aprobacion": { "type": "string", "enum": ["pendiente", "aprobado", "rechazado", "cancelado"], "nullable": true, "example": null },
+                  "tipo_aprobacion": { "type": "string", "enum": ["medica", "financiera", "administrativa"], "nullable": true, "example": null },
+                  "urgencia": { "type": "string", "enum": ["baja", "media", "alta", "urgente"], "nullable": true, "example": null },
+                  "forzar_generacion_solicitudes": { "type": "boolean", "example": false }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Aprobaciones generadas exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "50 aprobaciones generadas y enlazadas exitosamente." },
+                    "advertencia": { "type": "string", "example": "Solo se encontraron 20 solicitudes pendientes para aprobar." },
+                    "tiempo_ejecucion": { "type": "string", "example": "1.82 segundos" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "No hay solicitudes pendientes o faltan dependencias jerárquicas." },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/aprobaciones/poblar": {
+      "post": {
+        "summary": "Poblar aprobaciones masivamente",
+        "tags": ["Aprobaciones"],
+        "description": "Genera datos aleatorios y realistas de aprobaciones en MongoDB con validación cruzada a MySQL.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cantidad": { "type": "integer", "example": 100, "description": "Cantidad de aprobaciones a generar" },
+                  "entidad_tipo": { "type": "string", "enum": ["SolicitudServicio", "Cirugia", "Traslado", "Campania", "Otro"], "nullable": true, "example": null },
+                  "estatus": { "type": "string", "enum": ["pendiente", "aprobado", "rechazado", "cancelado"], "nullable": true, "example": null },
+                  "nivel": { "type": "integer", "minimum": 1, "maximum": 3, "nullable": true, "example": null, "description": "Nivel jerárquico de aprobación" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Aprobaciones generadas exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "100 aprobaciones generadas exitosamente." },
+                    "tiempo_ejecucion": { "type": "string", "example": "2.45 segundos" },
+                    "warning": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Error de validación en los datos" },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/aprobaciones/limpiar": {
+      "delete": {
+        "summary": "Vaciar la colección de aprobaciones",
+        "tags": ["Aprobaciones"],
+        "description": "Elimina de forma permanente todos los documentos en la colección de MongoDB de Aprobaciones.",
+        "responses": {
+          "200": {
+            "description": "Colección limpiada exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Colección de Aprobaciones limpiada exitosamente." },
+                    "deletedCount": { "type": "integer", "example": 100 }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/aprobaciones": {
+      "get": {
+        "summary": "Obtener todas las aprobaciones",
+        "tags": ["Aprobaciones"],
+        "responses": {
+          "200": {
+            "description": "Lista de aprobaciones obtenida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cantidad": { "type": "integer", "example": 50 },
+                    "data": { "type": "array", "items": { "type": "object" } }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/solicitudes-servicios/poblar": {
+      "post": {
+        "summary": "Poblar solicitudes de servicios masivamente",
+        "tags": ["Solicitudes de Servicios"],
+        "description": "Genera datos aleatorios y realistas de solicitudes de servicios en MongoDB con validación a MySQL.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cantidad": { "type": "integer", "example": 100, "description": "Cantidad de solicitudes a generar" },
+                  "tipo_servicio": { "type": "string", "nullable": true, "example": null, "description": "Tipo de servicio (opcional)" },
+                  "estatus": { "type": "string", "enum": ["pendiente", "en_proceso", "completado", "cancelado"], "nullable": true, "example": null },
+                  "prioridad": { "type": "string", "enum": ["baja", "media", "alta", "urgente"], "nullable": true, "example": null }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Solicitudes generadas exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "100 solicitudes de servicio generadas exitosamente." },
+                    "tiempo_ejecucion": { "type": "string", "example": "3.12 segundos" },
+                    "warning": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Error de validación en los datos" },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/solicitudes-servicios/limpiar": {
+      "delete": {
+        "summary": "Vaciar la colección de solicitudes de servicios",
+        "tags": ["Solicitudes de Servicios"],
+        "description": "Elimina de forma permanente todos los documentos en la colección de MongoDB de Solicitudes de Servicios.",
+        "responses": {
+          "200": {
+            "description": "Colección limpiada exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Colección de Solicitudes de Servicios limpiada exitosamente." },
+                    "deletedCount": { "type": "integer", "example": 100 }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    },
+    "/gerencia/solicitudes-servicios": {
+      "get": {
+        "summary": "Obtener todas las solicitudes de servicios",
+        "tags": ["Solicitudes de Servicios"],
+        "responses": {
+          "200": {
+            "description": "Lista de solicitudes obtenida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cantidad": { "type": "integer", "example": 75 },
+                    "data": { "type": "array", "items": { "type": "object" } }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Error interno del servidor" }
+        }
+      }
+    }
+  }
+}
