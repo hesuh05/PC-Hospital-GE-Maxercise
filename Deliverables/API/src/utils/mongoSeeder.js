@@ -29,7 +29,7 @@ const obtenerDatosBaseMySQL = async () => {
 // ==========================================
 // GENERADOR CENTRAL DE APROBACIONES
 // ==========================================
-const generarAprobacionesMock = async (solicitudes, config) => {
+const generarAprobacionesMock = async (solicitudes, config = {}) => {
   const { personalRows } = await obtenerDatosBaseMySQL();
   const aprobacionesGeneradas = [];
   const { estatus_aprobacion, tipo_aprobacion, urgencia } = config;
@@ -229,7 +229,7 @@ const generarSolicitudesMock = async (config) => {
       const solicitudesPendientes = docsInsertados.filter(doc => doc.estatus === 'pendiente');
 
       if (solicitudesPendientes.length > 0) {
-        await generarAprobacionesMock(solicitudesPendientes);
+        await generarAprobacionesMock(solicitudesPendientes, {});
       }
     }
   }

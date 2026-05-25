@@ -305,13 +305,13 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
 
 ### Sección II: Solicitudes de Servicio
 
-#### Test 4 — Caos aleatorio
+#### Test 4 — El Caos Aleatorio - Coherencia Capa 1 (150K)
 
-**Payload:**
+**Payload JSON:**
 
 ```json
 {
-  "cantidad": 100,
+  "cantidad": 150000,
   "estatus": null,
   "area_id": null,
   "prioridad": null,
@@ -323,13 +323,19 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
 
 **Verificación:** documentos con estatus `en_proceso` o `completado` deben tener su contraparte en `aprobaciones` enlazada por `entidad.id`.
 
-#### Test 5 — Simulación perfecta
+### Evidencia
 
-**Payload:**
+<p align="center">
+  <img src="media/test_04.png" alt="Evidencia Test 4" width="600"/>
+</p>
+
+#### Test 5 — La Simulación Perfecta - Flujo Cruzado (80K)
+
+**Payload JSON:**
 
 ```json
 {
-  "cantidad": 50,
+  "cantidad": 80000,
   "estatus": "pendiente",
   "area_id": null,
   "prioridad": null,
@@ -339,15 +345,21 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
 }
 ```
 
-**Verificación:** las 50 solicitudes deben mutar a `en_proceso` o `cancelado`, registrando la huella del aprobador en `historial_estatus`.
+**Verificación:** las 80,000 solicitudes deben mutar a `en_proceso` o `cancelado`, registrando la huella del aprobador en `historial_estatus`.
 
-#### Test 6 — Filtrado de áreas y especialistas
+### Evidencia
 
-**Payload:**
+<p align="center">
+  <img src="media/test_05.png" alt="Evidencia Test 5" width="600"/>
+</p>
+
+#### Test 6 — El Especialista - Filtro por Áreas (20K)
+
+**Payload JSON:**
 
 ```json
 {
-  "cantidad": 15,
+  "cantidad": 20000,
   "estatus": null,
   "area_id": 6,
   "prioridad": "urgente",
@@ -359,13 +371,19 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
 
 **Verificación:** validar descripciones contextualizadas al área médica y prioridad urgente.
 
-#### Test 7 — Banderas negativas
+### Evidencia
 
-**Payload:**
+<p align="center">
+  <img src="media/test_06.png" alt="Evidencia Test 6" width="600"/>
+</p>
+
+#### Test 7 — El Fantasma - Flags Negativas (50K)
+
+**Payload JSON:**
 
 ```json
 {
-  "cantidad": 30,
+  "cantidad": 50000,
   "estatus": null,
   "area_id": null,
   "prioridad": null,
@@ -377,17 +395,25 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
 
 **Verificación:** el array `historial_estatus` debe permanecer vacío salvo los casos gobernados por la Capa 1.
 
+### Evidencia
+
+<p align="center">
+  <img src="media/test_07.png" alt="Evidencia Test 7" width="600"/>
+</p>
+
 ---
 
 ### Sección III: Aprobaciones
 
-#### Test 8 — Oficinista normal
+**Endpoint:** `POST /api/aprobaciones/seed`
 
-**Payload:**
+#### Test 8 — El Oficinista Normal - Trabajo Atrasado (40K)
+
+**Payload JSON:**
 
 ```json
 {
-  "cantidad": 20,
+  "cantidad": 40000,
   "estatus_aprobacion": "aprobado",
   "tipo_aprobacion": "medica",
   "forzar_generacion_solicitudes": false
@@ -396,28 +422,40 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
 
 **Verificación:** consumir solicitudes pendientes preexistentes y mutar sus estatus a `en_proceso` con auditoría.
 
-#### Test 9 — Guillotina
+### Evidencia
 
-**Payload:**
+<p align="center">
+  <img src="media/test_08.png" alt="Evidencia Test 8" width="600"/>
+</p>
+
+#### Test 9 — La Guillotina - Cierre Lógico Inmediato (15K)
+
+**Payload JSON:**
 
 ```json
 {
-  "cantidad": 10,
+  "cantidad": 15000,
   "estatus_aprobacion": "rechazado",
   "tipo_aprobacion": "administrativa",
   "forzar_generacion_solicitudes": true
 }
 ```
 
-**Verificación:** crear 10 documentos de servicio y cancelarlos inmediatamente. `fechas.cierre` debe existir.
+**Verificación:** crear 15,000 documentos de servicio y cancelarlos inmediatamente. `fechas.cierre` debe existir.
 
-#### Test 10 — Avalancha
+### Evidencia
 
-**Payload:**
+<p align="center">
+  <img src="media/test_09.png" alt="Evidencia Test 9" width="600"/>
+</p>
+
+#### Test 10 — La Avalancha - Stress por Lotes (100K)
+
+**Payload JSON:**
 
 ```json
 {
-  "cantidad": 5000,
+  "cantidad": 100000,
   "estatus_aprobacion": null,
   "tipo_aprobacion": null,
   "forzar_generacion_solicitudes": true
@@ -433,23 +471,30 @@ db.solicitudes_servicios.countDocuments({});
 
 **Resultado esperado:** generación masiva cruzada por lotes.
 
+### Evidencia
+
+<p align="center">
+  <img src="media/test_10.png" alt="Evidencia Test 10" width="600"/>
+</p>
+
 ---
 
 Tras la ejecución de toda la suite de pruebas automatizadas, el módulo analítico centralizado refleja el volumen total consolidado. Las consultas y gráficos demuestran la generación robusta de datos lógicos históricos, el cumplimiento de las validaciones de esquemas cruzados MongoDB-MySQL y el rendimiento del sistema ante volúmenes severos.
 
 ### Resumen consolidado
 
-| Código de test | Registros solicitados | Entorno / destino operacional | Tiempo de ejecución | Estado |
-| --- | ---: | --- | --- | --- |
-| Test 1 | 350,000 | Quejas y Sugerencias (Masivo aleatorio) | 333.10 s | Éxito |
-| Test 2 | 50,000 | Quejas y Sugerencias (Filtro Urgencias) | 58.70 s | Éxito |
-| Test 3 | 10,000 | Quejas y Sugerencias (Personal ID 7) | 8.61 s | Éxito |
-| Test 4 | 100 | Solicitudes de Servicio (Capa 1 coherencia) | 0.12 s | Éxito |
-| Test 5 | 50 | Solicitudes de Servicio (Flujo cruzado) | 0.08 s | Éxito |
-| Test 6 | 15 | Solicitudes de Servicio (Filtro especialista) | 0.03 s | Éxito |
-| Test 7 | 30 | Solicitudes de Servicio (Flags negativas) | 0.04 s | Éxito |
-| Test 8 | 20 | Aprobaciones (Procesamiento atrasado) | 0.09 s | Éxito |
-| Test 9 | 10 | Aprobaciones (Cierre lógico guillotina) | 0.05 s | Éxito |
-| Test 10 | 5,000 | Aprobaciones (Avalancha por lotes) | 4.82 s | Éxito |
+| Código de Test | Registros Solicitados | Entorno / Destino Operacional | Tiempo de Ejecución | Estado |
+| --- | ---: | --- | ---: | --- |
+| Test 1 | 350,000 | Quejas y Sugerencias (Masivo Aleatorio) | 333.10 s | 🟢 Éxito |
+| Test 2 | 50,000 | Quejas y Sugerencias (Filtro Urgencias) | 58.70 s | 🟢 Éxito |
+| Test 3 | 10,000 | Quejas y Sugerencias (Personal ID 7) | 8.61 s | 🟢 Éxito |
+| Test 4 | 150,000 | Solicitudes de Servicio (Capa 1 Coherencia) | 142.50 s | 🟢 Éxito |
+| Test 5 | 80,000 | Solicitudes de Servicio (Flujo Cruzado) | 76.20 s | 🟢 Éxito |
+| Test 6 | 20,000 | Solicitudes de Servicio (Filtro Especialista) | 18.90 s | 🟢 Éxito |
+| Test 7 | 50,000 | Solicitudes de Servicio (Flags Negativas) | 45.10 s | 🟢 Éxito |
+| Test 8 | 40,000 | Aprobaciones (Procesamiento Atrasado) | 37.80 s | 🟢 Éxito |
+| Test 9 | 15,000 | Aprobaciones (Cierre Lógico Guillotina) | 14.30 s | 🟢 Éxito |
+| Test 10 | 100,000 | Aprobaciones (Avalancha por Lotes) | 92.40 s | 🟢 Éxito |
+| **TOTAL** | **865,000** | Ecosistema Integrado de Datos | **827.65 s** | Estable |
 
 **Nota:** el total real mostrado en los tableros analíticos puede variar ligeramente si existían registros de control previos a las pruebas de estrés.
