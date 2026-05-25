@@ -10,7 +10,17 @@ Centraliza la implementación funcional y lógica de la API para el procesamient
 
 ## Estructura del Directorio
 
-Este directorio no contiene subniveles adicionales; se enfoca en el código fuente principal de la API.
+Aquí se pueden almacenar:
+
+- Controladores
+- Servicios
+- Rutas
+- Modelos
+- Middleware
+- Configuración de conexión a base de datos
+- Lógica de negocio
+- Validaciones
+- Utilidades y helpers
 
 ## Colaboradores
 
@@ -21,3 +31,4 @@ Este directorio no contiene subniveles adicionales; se enfoca en el código fuen
 | Luís Daniel Suárez Escamilla | [@Danny88e](https://github.com/Danny88e) | Administración de Bases de Datos (y Documentación) | ✅ Revisado y aprobado. |
 | Adrián Pérez Jiménez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | ✅ Revisado y aprobado. |
 | Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | ✅ Revisado y aprobado. |
+

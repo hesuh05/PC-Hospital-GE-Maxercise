@@ -16,8 +16,12 @@ API/
 │   └── DeployManual.md
 ├── build/
 │   └── Build.md
-└── source/
-    └── Source.md
+├── src/
+│   └── Source.md
+├── server.js
+│
+├── package.json
+└── swagger.json
 ```
 
 ## Colaboradores
@@ -30,6 +34,3 @@ API/
 | Adrián Pérez Jiménez | [@heidrihen52](https://github.com/heidrihen52) | Desarrollador Frontend (y Documentación) | ✅ Revisado y aprobado. |
 | Sayurid Bautista Cruz | [@sayuridbc](https://github.com/sayuridbc) | Documentación | ✅ Revisado y aprobado. |
 
-## Formatos de Archivos
-
-Aquí encontrarás archivos de documentación en formatos como .md, .txt, y otros archivos específicos de la API según el tipo.
