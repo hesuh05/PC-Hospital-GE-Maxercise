@@ -29,15 +29,15 @@ Se utiliza principalmente para:
 ## 1. Especificación de endpoints
 
 ### Endpoint A: Quejas y Sugerencias
-* **Ruta:** `POST /api/quejas/seed`
+* **Ruta:** `POST /gerencia/mongo/quejas-sugerencias/poblar`
 * **Content-Type:** `application/json`
 
 ### Endpoint B: Solicitudes de Servicio
-* **Ruta:** `POST /api/solicitudes/seed`
+* **Ruta:** `POST /gerencia/solicitudes-servicios/poblar`
 * **Content-Type:** `application/json`
 
 ### Endpoint C: Aprobaciones
-* **Ruta:** `POST /api/aprobaciones/seed`
+* **Ruta:** `POST /gerencia/aprobaciones/poblar`
 * **Content-Type:** `application/json`
 
 ---
