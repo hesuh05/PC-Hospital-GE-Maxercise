@@ -118,6 +118,20 @@ net start MongoDB
 sudo systemctl start mongod
 ```
 
+**Nota (Windows - instalación sin servicio):** Si tu instalación de MongoDB no está registrada como servicio, inicia el demonio manualmente ejecutando `mongod.exe` desde la carpeta `bin` de la instalación. Ejemplos:
+
+```powershell
+"C:\Program Files\MongoDB\Server\<version>\bin\mongod.exe"
+# o, si usas una carpeta de datos personalizada:
+"C:\Program Files\MongoDB\Server\<version>\bin\mongod.exe" --dbpath "C:\data\db"
+```
+
+Si no existe la carpeta `C:\data\db`, créala antes de usar `--dbpath`:
+
+```powershell
+mkdir C:\data\db
+```
+
 ### 2. Cargar Respaldo de Datos (Opcional)
 Si necesitas la colección `quejas_sugerencias` inicial cargada con más de 500,000 documentos de prueba:
 1.  **Descarga el respaldo:** [Descargar Backup MongoDB desde Google Drive](https://drive.google.com/drive/folders/1kUFQgzkNEOC42cnBYsvInpauA0pSXeAi?usp=drive_link)
