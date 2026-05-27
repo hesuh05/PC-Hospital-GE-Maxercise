@@ -82,39 +82,25 @@ CREATE DATABASE hospital_230028;
 
 ### 2. Importar la Estructura (Esquema DDL)
 Importa el esquema de tablas desde el archivo de respaldo estructural ubicado en el repositorio:
-*   **Ruta del archivo:** `./DataBases/SQL/Backups/latest_structural_backup.sql`
+*   **Ruta del archivo en el repositorio:** `DataBases/SQL/Backups/latest_structural_backup.sql`
+*   **Nota:** este es el único archivo de esquema SQL versionado actualmente en el repositorio.
 
-**Comando CLI:**
+**Comando CLI (desde la raíz del repositorio):**
 ```bash
-mysql -u [usuario] -p hospital_230028 < SQL/db/backups/Structure/backup_estructura20260324.sql
+mysql -u [usuario] -p hospital_230028 < DataBases/SQL/Backups/latest_structural_backup.sql
 ```
+> **Nota:** si ejecutas el comando desde otra carpeta, ajusta la ruta al archivo SQL según tu ubicación actual.
+>
+> **Nota adicional para MySQL Workbench:** si la importación falla usando la opción `Import` y seleccionando el archivo, prueba a abrir `latest_structural_backup.sql` como texto, copiar todo su contenido y pegarlo en una pestaña nueva de consulta (`query window`) para ejecutarlo desde allí.
 *(O arrastra el archivo SQL a tu herramienta gráfica favorita y ejecútalo sobre la BD creada).*
 
-### 3. Cargar los Datos Iniciales (DML)
-Debido al volumen de registros (+1 millón de filas), los datos no están versionados directamente en GitHub. Descarga el respaldo correspondiente en los siguientes enlaces oficiales del proyecto:
+### 3. Cargar los Datos Iniciales (DML) — Opcional
+Los datos transaccionales (DML) no están incluidos en el repositorio debido a su tamaño. Si necesitas poblaciones reales, puedes:
 
-*   **Opción A (Recomendado - 09/03/2026):** [Descargar Backup de Datos desde Google Drive](https://drive.google.com/file/d/1jUlc55HUYPpXeQwbjO-4FldKjOulbBrI/view?usp=sharing)
-    *   *Incluye:* `tbb_hr_personas`, `tbb_hr_personas_fisicas`, `tbb_md_pacientes`.
-*   **Opción B (Versión anterior - 19/02/2026):** [Descargar Backup de Datos desde Google Drive](https://drive.google.com/file/d/1l4dll9jst0SaG0kQmKTomTlml4dySl_U/view?usp=sharing)
-    *   *Incluye:* `tbb_personas`, `tbb_personas_fisicas`, `tbb_pacientes`.
+- Descargar los backups oficiales (si están disponibles) desde las fuentes externas mantenidas por el equipo.
+- O bien utilizar los endpoints de población incluidos en la API para generar datos sintéticos coherentes y reproducibles (recomendado para pruebas y entornos locales).
 
-**Comando CLI para importar los datos descargados:**
-```bash
-mysql -u [usuario] -p hospital_230028 < [Ruta_del_archivo_descargado].sql
-```
-
-### 4. Configurar Roles y Privilegios
-El proyecto incluye un script para definir los accesos operativos del hospital:
-*   **Ruta del archivo:** `SQL/db/scripts/roles_privileges.sql`
-
-> [!WARNING]
-> El script `roles_privileges.sql` del repositorio utiliza por defecto la base de datos `hospital_230052` en sus instrucciones `GRANT`. 
-> Si tu base de datos se llama diferente (ej. `hospital_230028`), deberás abrir el archivo SQL y reemplazar globalmente `hospital_230052` por tu nombre de base de datos antes de ejecutarlo.
-
-**Comando CLI:**
-```bash
-mysql -u root -p < SQL/db/scripts/roles_privileges.sql
-```
+Si tienes un respaldo externo: importa el `.sql` mediante tu cliente preferido o con el comando CLI mostrado en la sección anterior, ajustando la ruta al archivo.
 
 ---
 
