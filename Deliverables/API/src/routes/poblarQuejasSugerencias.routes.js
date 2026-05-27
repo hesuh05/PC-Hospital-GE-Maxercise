@@ -3,13 +3,13 @@ const router = express.Router();
 const QuejaSugerencia = require('../models/quejas_sugerencias.model');
 const controller = require('../controllers/poblarQuejasSugerencias.controller.js');
 
-// Generar/poblar datos aleatorios en MongoDB 
-router.post('/quejas-sugerencias/poblar', controller.poblarQuejasSugerencias);
+// Generar/poblar datos aleatorios en MongoDB (moved under /mongo namespace)
+router.post('/mongo/quejas-sugerencias/poblar', controller.poblarQuejasSugerencias);
 
 // Limpiar la colección de MongoDB
-router.delete('/quejas-sugerencias/limpiar', controller.limpiarQuejasSugerencias);
+router.delete('/mongo/quejas-sugerencias/limpiar', controller.limpiarQuejasSugerencias);
 
-router.get('/quejas-sugerencias', async (req, res) => {
+router.get('/mongo/quejas-sugerencias', async (req, res) => {
     try {
         const quejas = await QuejaSugerencia.find();
         res.status(200).json({ 

@@ -25,61 +25,11 @@
     }
   ],
   "paths": {
-    "/gerencia/quejas-sugerencias/limpiar": {
-      "delete": {
-        "summary": "Vaciar la colección de quejas y sugerencias",
-        "tags": [
-          "Quejas y Sugerencias"
-        ],
-        "description": "Elimina de forma permanente todos los documentos en la colección de MongoDB de Quejas y Sugerencias.",
-        "responses": {
-          "200": {
-            "description": "Colección limpiada exitosamente.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Colección de Quejas y Sugerencias limpiada exitosamente."
-                    },
-                    "deletedCount": {
-                      "type": "integer",
-                      "example": 15
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Error interno del servidor.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "Error interno al intentar vaciar la colección."
-                    },
-                    "details": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/gerencia/quejas-sugerencias/poblar": {
+    "/gerencia/mongo/quejas-sugerencias/poblar": {
       "post": {
-        "summary": "Poblar quejas y sugerencias masivamente",
-        "tags": ["Quejas y Sugerencias"],
-        "description": "Genera datos aleatorios y realistas de quejas y sugerencias en MongoDB. Permite filtrar la generación por área, departamento o forzar a un empleado específico.",
+        "summary": "Poblar quejas y sugerencias masivamente (Mongo Seeder)",
+        "tags": ["Mongo Seeder"],
+        "description": "Genera datos aleatorios de quejas y sugerencias directamente en MongoDB, utilizando el endpoint de poblado de colección.",
         "requestBody": {
           "required": true,
           "content": {
@@ -102,65 +52,45 @@
           }
         },
         "responses": {
-          "201": { 
-            "description": "Registros generados con éxito",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": { "type": "string", "example": "50000 registros generados exitosamente." },
-                    "tiempo_ejecucion": { "type": "string", "example": "14.35 segundos" },
-                    "warning": { "type": "string", "example": "Los datos generados han sido omitidos de la respuesta para no saturar tu cliente de red." }
-                  }
-                }
-              }
-            }
-          },
-          "400": { "description": "Incongruencia en los parámetros (Ej. el personal no pertenece al departamento indicado)." },
+          "201": { "description": "Registros generados con éxito" },
+          "400": { "description": "Incongruencia en los parámetros." },
           "404": { "description": "Área, Departamento o Personal no encontrado." },
           "500": { "description": "Error interno del servidor" }
         }
       }
     },
-    "/gerencia/quejas-sugerencias": {
-      "get": {
-        "summary": "Obtener quejas y sugerencias paginadas",
-        "tags": ["Quejas y Sugerencias"],
-        "description": "Consulta la base de datos de MongoDB con soporte para paginación y filtros dinámicos.",
-        "parameters": [
-          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 }, "description": "Número de página a consultar." },
-          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 10 }, "description": "Cantidad de registros por página." },
-          { "name": "folio", "in": "query", "schema": { "type": "string" }, "description": "Búsqueda parcial por número de folio." },
-          { "name": "estatus", "in": "query", "schema": { "type": "string" }, "description": "Filtrar por estatus." },
-          { "name": "tipo", "in": "query", "schema": { "type": "string" }, "description": "Filtrar por tipo (queja o sugerencia)." },
-          { "name": "departamento", "in": "query", "schema": { "type": "string" }, "description": "Búsqueda parcial por nombre del departamento." },
-          { "name": "prioridad", "in": "query", "schema": { "type": "string" }, "description": "Filtrar por prioridad." }
-        ],
+    "/gerencia/mongo/quejas-sugerencias/limpiar": {
+      "delete": {
+        "summary": "Vaciar la colección de quejas y sugerencias (Mongo Seeder)",
+        "tags": ["Mongo Seeder"],
+        "description": "Elimina todos los documentos de la colección de Quejas y Sugerencias en MongoDB.",
         "responses": {
           "200": {
-            "description": "Lista paginada devuelta exitosamente.",
+            "description": "Colección limpiada exitosamente.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "totalRegistros": { "type": "integer", "example": 150 },
-                        "totalPaginas": { "type": "integer", "example": 15 },
-                        "paginaActual": { "type": "integer", "example": 1 },
-                        "registrosPorPagina": { "type": "integer", "example": 10 }
-                      }
-                    },
-                    "data": { "type": "array", "items": { "type": "object" } }
+                    "message": { "type": "string", "example": "Colección de Quejas y Sugerencias limpiada exitosamente." }
                   }
                 }
               }
             }
           },
-          "500": { "description": "Error interno al consultar MongoDB." }
+          "500": {
+            "description": "Error interno del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string", "example": "Error interno al intentar vaciar la colección." }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
