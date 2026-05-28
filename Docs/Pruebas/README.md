@@ -29,15 +29,15 @@ Se utiliza principalmente para:
 ## 1. Especificación de endpoints
 
 ### Endpoint A: Quejas y Sugerencias
-* **Ruta:** `POST /api/quejas/seed`
+* **Ruta:** `POST /gerencia/mongo/quejas-sugerencias/poblar`
 * **Content-Type:** `application/json`
 
 ### Endpoint B: Solicitudes de Servicio
-* **Ruta:** `POST /api/solicitudes/seed`
+* **Ruta:** `POST /gerencia/solicitudes-servicios/poblar`
 * **Content-Type:** `application/json`
 
 ### Endpoint C: Aprobaciones
-* **Ruta:** `POST /api/aprobaciones/seed`
+* **Ruta:** `POST /gerencia/aprobaciones/poblar`
 * **Content-Type:** `application/json`
 
 ---
@@ -207,7 +207,9 @@ A continuación se presentan las pruebas diseñadas para certificar el ecosistem
 
 ### Sección I: Quejas y Sugerencias
 
-#### Test 1 — 350,000 registros
+#### Test 1 — Inserción masiva aleatoria de Quejas y Sugerencias
+
+**Descripción:** Inserta 350,000 documentos en la colección `quejas_sugerencias` con seguimiento aleatorio y valores generados automáticamente para `tipo`, `prioridad`, `estatus` y `medio_recepcion`, sin filtro de área, departamento ni personal.
 
 **Payload:**
 
@@ -241,6 +243,8 @@ db.quejas_sugerencias.countDocuments({});
 
 #### Test 2 — 50,000 quejas urgentes en Urgencias
 
+**Descripción:** Inserta 50,000 documentos del tipo `queja` con `prioridad: "urgente"` y `departamento_id: 1` (Urgencias), con seguimiento aleatorio para validar filtrado por urgencia y departamento.
+
 **Payload:**
 
 ```json
@@ -271,7 +275,9 @@ db.quejas_sugerencias.countDocuments({ tipo: "queja", "departamento.id": 1, prio
   <img src="media/test_02.png" alt="Evidencia Test 2" width="600"/>
 </p>
 
-#### Test 3 — 10,000 reportes directos a empleado
+#### Test 3 — 10,000 quejas para personal específico
+
+**Descripción:** Inserta 10,000 quejas vinculadas al `personal_id: 7` con `con_seguimiento: "si"`, validando la generación de seguimiento y la asociación directa a un empleado definido.
 
 **Payload:**
 
@@ -305,7 +311,9 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
 
 ### Sección II: Solicitudes de Servicio
 
-#### Test 4 — El Caos Aleatorio - Coherencia Capa 1 (150K)
+#### Test 4 — Inserción masiva de solicitudes con historial obligatorio (150K)
+
+**Descripción:** Genera 150,000 solicitudes de servicio sin filtro específico, con `con_historial: "si"` para validar la coherencia histórica entre estados y la necesidad de registro de eventos previos.
 
 **Payload JSON:**
 
@@ -329,7 +337,9 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
   <img src="media/test_04.png" alt="Evidencia Test 4" width="600"/>
 </p>
 
-#### Test 5 — La Simulación Perfecta - Flujo Cruzado (80K)
+#### Test 5 — Solicitudes con aprobación automática y flujo cruzado (80K)
+
+**Descripción:** Genera 80,000 solicitudes pendientes con `autogenerar_aprobaciones: true`, validando la creación automática de aprobaciones y la evolución lógica de estados en el mismo flujo.
 
 **Payload JSON:**
 
@@ -353,7 +363,9 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
   <img src="media/test_05.png" alt="Evidencia Test 5" width="600"/>
 </p>
 
-#### Test 6 — El Especialista - Filtro por Áreas (20K)
+#### Test 6 — Solicitudes urgentes para Servicios Médicos (20K)
+
+**Descripción:** Inserta 20,000 solicitudes con `prioridad: "urgente"`, `canal_origen: "presencial"` y `area_id: 6`, para validar las solicitudes críticas en el área médica con historial cronológico.
 
 **Payload JSON:**
 
@@ -377,7 +389,9 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
   <img src="media/test_06.png" alt="Evidencia Test 6" width="600"/>
 </p>
 
-#### Test 7 — El Fantasma - Flags Negativas (50K)
+#### Test 7 — Solicitudes sin historial (flags negativas) (50K)
+
+**Descripción:** Inserta 50,000 solicitudes con `con_historial: "no"` para comprobar que el array `historial_estatus` permanece vacío salvo las excepciones necesarias por condiciones de negocio.
 
 **Payload JSON:**
 
@@ -407,7 +421,9 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
 
 **Endpoint:** `POST /api/aprobaciones/seed`
 
-#### Test 8 — El Oficinista Normal - Trabajo Atrasado (40K)
+#### Test 8 — Aprobaciones aprobadas para solicitudes pendientes (40K)
+
+**Descripción:** Genera 40,000 aprobaciones `aprobado` de tipo `medica`, consumiendo solicitudes pendientes y verificando que estas cambien a `en_proceso` con auditoría en `historial_estatus`.
 
 **Payload JSON:**
 
@@ -428,7 +444,9 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
   <img src="media/test_08.png" alt="Evidencia Test 8" width="600"/>
 </p>
 
-#### Test 9 — La Guillotina - Cierre Lógico Inmediato (15K)
+#### Test 9 — Rechazo inmediato con generación forzada de solicitudes (15K)
+
+**Descripción:** Genera 15,000 aprobaciones `rechazado` de tipo `administrativa` con `forzar_generacion_solicitudes: true`, creando nuevas solicitudes y cerrándolas inmediatamente.
 
 **Payload JSON:**
 
@@ -449,7 +467,9 @@ db.quejas_sugerencias.countDocuments({ "personal_involucrado.id": 7, "seguimient
   <img src="media/test_09.png" alt="Evidencia Test 9" width="600"/>
 </p>
 
-#### Test 10 — La Avalancha - Stress por Lotes (100K)
+#### Test 10 — Stress masivo de aprobaciones con generación cruzada (100K)
+
+**Descripción:** Genera 100,000 aprobaciones con `forzar_generacion_solicitudes: true` y sin parámetros específicos, validando el flujo cruzado de generación masiva entre `aprobaciones` y `solicitudes_servicios`.
 
 **Payload JSON:**
 
